@@ -1,0 +1,8 @@
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.deps.json
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.runtimeconfig.json
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.runtimeconfig.dev.json
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.dll
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.csprojAssemblyReference.cache
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.csproj.CoreCompileInputs.cache
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfoInputs.cache
+C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfo.cs
