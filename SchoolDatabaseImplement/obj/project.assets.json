@@ -1411,11 +1411,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
+      "projectUniqueName": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
       "projectName": "SchoolDatabaseImplement",
-      "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
+      "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
       "packagesPath": "C:\\Users\\Denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\obj\\",
+      "outputPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\SchoolDatabaseImplement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1434,8 +1434,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj"
+            "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj"
             }
           }
         }

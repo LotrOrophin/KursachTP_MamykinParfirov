@@ -186,11 +186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
       "projectName": "AbstractSchoolBusinessLogic",
-      "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+      "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
       "packagesPath": "C:\\Users\\Denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\obj\\",
+      "outputPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

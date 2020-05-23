@@ -4,14 +4,10 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.BindingModels
 {
-    /// <summary>
-    /// Изделие, изготавливаемое в магазине
-    /// </summary>
-    public class StationeryBindingModel
+    public class SchoolSupplieBindingModel
     {
         public int? Id { get; set; }
-        public string StationeryName { get; set; }
+        public string SchoolSupplieName { get; set; }
         public decimal Price { get; set; }
-        
     }
 }

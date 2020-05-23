@@ -1,23 +1,20 @@
-﻿using System;
+﻿using AbstractSchoolBusinessLogic.Enums;
+using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Text;
-using AbstractSchoolBusinessLogic.Enums;
-
 
 namespace AbstractSchoolBusinessLogic.BindingModels
 {
-    public class OrderBindingModel
+    public class RequestBindingModel
     {
         public int? Id { get; set; }
-        public int Count { get; set; }
+        public int? SupplierId { get; set; }
         public decimal Sum { get; set; }
-        public DateTime CreationDate { get; set; }
-        public DateTime? CompletionDate { get; set; }
+        public DateTime DateCreate { get; set; }
+        public DateTime? DateImplement { get; set; }
         public OrderStatus Status { get; set; }
-        public int CircleId { get; set; }
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
+        public List<RequestSchoolSupplieBindingModel> RequestScholSupllies { get; set; }
     }
-
 }

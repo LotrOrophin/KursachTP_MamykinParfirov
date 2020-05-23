@@ -4,9 +4,6 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.Enums
 {
-    /// <summary>
-    /// Статус заказа
-    /// </summary>
     public enum OrderStatus
     {
         Принят = 0,
