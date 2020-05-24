@@ -10,6 +10,6 @@ namespace AbstractSchoolBusinessLogic.HelperModels
         public string FileName { get; set; }
         public string Title { get; set; }
         public List<SchoolSupplieViewModel> SchoolSupplies { get; set; }
-        public List<StationeryViewModel> Stationeries { get; set; }
+        public List<WareHouseViewModel> Stationeries { get; set; }
     }
 }
