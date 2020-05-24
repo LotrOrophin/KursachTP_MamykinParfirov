@@ -9,7 +9,7 @@ namespace AbstractSchoolBusinessLogic.HelperModels
     {
         public string FileName { get; set; }
         public string Title { get; set; }
-        public List<SchoolSupplieViewModel> SchoolSupplies { get; set; }
-        public List<WareHouseViewModel> Stationeries { get; set; }
+        public List<CircleViewModel> Circles { get; set; }
+        public List<WareHouseViewModel> Warehouses { get; set; }
     }
 }
