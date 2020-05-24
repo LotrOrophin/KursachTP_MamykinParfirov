@@ -4,9 +4,6 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.BindingModels
 {
-    /// <summary>
-    /// Компонент, требуемый для изготовления изделия
-    /// </summary>
     public class CircleBindingModel
     {
         public int? Id { get; set; }

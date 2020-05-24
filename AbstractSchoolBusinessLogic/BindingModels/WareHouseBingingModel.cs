@@ -10,6 +10,6 @@ namespace AbstractSchoolBusinessLogic.BindingModels
         public string WareHouseName { get; set; }
         public int Capacity { get; set; }
         public string Type { get; set; }
-        public List<WareHouseSchoolSupplieBindingModel> FridgeFoods { get; set; }
+        public List<WareHouseSchoolSupplieBindingModel> WareHouseSchoolSupplies { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.BindingModels
 {
-    public class SchoolSupplieCircleBindingModel
+    public class CircleSchoolSupplieBindingModel
     {
         public int? Id { get; set; }
         public int SchoolSupplieId { get; set; }

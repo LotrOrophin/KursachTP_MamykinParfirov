@@ -19,7 +19,7 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         [DisplayName("Дата выполнения")]
         public DateTime? DateImplement { get; set; }
         [DisplayName("Статус")]
-        public OrderStatus Status { get; set; }
-        public List<RequestSchoolSupplieViewModel> RequestFoods { get; set; }
+        public OrderStatus OrderStatus { get; set; }
+        public List<RequestSchoolSupplieViewModel> RequestSchoolSupplies { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.ViewModels
 {
-    class SupplierViewModel
+    public class SupplierViewModel
     {
         public int Id { get; set; }
         [DisplayName("ФИО")]

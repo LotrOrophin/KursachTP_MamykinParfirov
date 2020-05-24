@@ -14,7 +14,7 @@ namespace AbstractSchoolBusinessLogic.BindingModels
         public decimal Sum { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? CompletionDate { get; set; }
-        public OrderStatus Status { get; set; }
+        public OrderStatus OrderStatus { get; set; }
         public int CircleId { get; set; }
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
