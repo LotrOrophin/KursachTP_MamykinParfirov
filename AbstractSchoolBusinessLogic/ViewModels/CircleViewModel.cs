@@ -11,17 +11,11 @@ namespace AbstractSchoolBusinessLogic.ViewModels
     public class CircleViewModel
     {
         public int Id { get; set; }
-        [DisplayName("Название кружка")]
+        [DisplayName("Название блюда")]
         public string CircleName { get; set; }
-        [DisplayName("Число участников")]
-        public int StudentNumber { get; set; }
-        [DisplayName("ФИО руководителя")]
-        public string TeacherName { get; set; }
-        [DisplayName("Специальность преподавателя")]
-        public string Specialty { get; set; }
-        [DisplayName("Возраст преподавателя")]
-        public int Age { get; set; }
-        public Dictionary<int, (string, int)> CircleStationery { get; set; }
+        [DisplayName("Цена")]
+        public decimal Price { get; set; }
+        public Dictionary<int, (string, int)> SchoolSupplieCircles { get; set; }
     }
 
 }

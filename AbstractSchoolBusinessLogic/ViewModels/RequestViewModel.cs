@@ -2,26 +2,24 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.Serialization;
 using System.Text;
 
 namespace AbstractSchoolBusinessLogic.ViewModels
 {
-    public class OrderViewModel
+    public class RequestViewModel
     {
         public int Id { get; set; }
-        [DisplayName("Количество")]
-        public int Count { get; set; }
+        public int SupplierId { get; set; }
+        [DisplayName("ФИО")]
+        public string SupplierFIO { get; set; }
         [DisplayName("Сумма")]
         public decimal Sum { get; set; }
         [DisplayName("Дата создания")]
-        public DateTime CreationDate { get; set; }
-        [DisplayName("Дата завершения")]
-        public DateTime? CompletionDate { get; set; }
+        public DateTime DateCreate { get; set; }
+        [DisplayName("Дата выполнения")]
+        public DateTime? DateImplement { get; set; }
         [DisplayName("Статус")]
         public OrderStatus Status { get; set; }
-        public int CircleId { get; set; }
-        public string SchoolSupplieName { get; set; }
-
+        public List<RequestSchoolSupplieViewModel> RequestFoods { get; set; }
     }
 }
