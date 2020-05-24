@@ -4,10 +4,10 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.ViewModels
 {
-   public class ReportCircleStationeryViewModel
+   public class ReportCircleSchoolSupplieViewModel
     {
-        public string StationeryName { get; set; }
+        public string SchoolSupplieName { get; set; }
         public string CircleName { get; set; }
-        public int TotalCount { get; set; }
+        public int Count { get; set; }
     }
 }

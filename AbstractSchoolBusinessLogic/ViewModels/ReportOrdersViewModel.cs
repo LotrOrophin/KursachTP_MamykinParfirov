@@ -8,20 +8,10 @@ namespace AbstractSchoolBusinessLogic.ViewModels
 {
    public class ReportOrdersViewModel
     {
-        [DisplayName("Дата создания")]
-        public DateTime DateCreate { get; set; }
-
-        [DisplayName("Канцтовар")]
-        public string StationeryName { get; set; }
-
-        [DisplayName("Количество")]
+        public DateTime CreationDate { get; set; }
+        public string CircleName { get; set; }
         public int Count { get; set; }
-
-        [DisplayName("Сумма")]
-        public decimal? Sum { get; set; }
-
-        [DisplayName("Статус")]
+        public decimal Amount { get; set; }
         public OrderStatus Status { get; set; }
-
     }
 }
