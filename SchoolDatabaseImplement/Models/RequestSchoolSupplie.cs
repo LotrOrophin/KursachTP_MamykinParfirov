@@ -5,14 +5,14 @@ using System.Text;
 
 namespace SchoolDatabaseImplement.Models
 {
-    public class RequestProduct
+    public class RequestSchoolSupplie
     {
         public int Id { get; set; }
         public int RequestId { get; set; }
-        public int ProductId { get; set; }
+        public int SchoolSupplieId { get; set; }
         [Required]
         public int Count { get; set; }
-        public Product Product { get; set; }
+        public SchoolSupplie SchoolSupplie { get; set; }
         public Request Request { get; set; }
     }
 }

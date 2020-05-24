@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {}
+    "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
+    "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
         "projectName": "AbstractSchoolBusinessLogic",
-        "projectPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
-        "packagesPath": "C:\\Users\\mamyk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\obj\\",
+        "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+        "packagesPath": "C:\\Users\\Denis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\mamyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,16 +57,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

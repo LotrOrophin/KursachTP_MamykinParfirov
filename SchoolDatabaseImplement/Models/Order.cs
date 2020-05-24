@@ -18,7 +18,7 @@ namespace SchoolDatabaseImplement.Models
         public DateTime? CompletionDate { get; set; }
         [Required]
         public OrderStatus Status { get; set; }
-        public int DishId { get; set; }
-        public Product Product { get; set; }
+        public int CircleId { get; set; }
+        public Circle Circle { get; set; }
     }
 }
