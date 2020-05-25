@@ -6,3 +6,7 @@ C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabase
 C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.csproj.CoreCompileInputs.cache
 C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfoInputs.cache
 C:\Users\Denis\source\repos\LotrOrophin\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfo.cs
+C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\AbstractSchoolBusinessLogic.dll
+C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.csprojAssemblyReference.cache
+C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfoInputs.cache
+C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfo.cs

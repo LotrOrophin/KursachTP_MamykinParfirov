@@ -16,6 +16,6 @@ namespace SchoolDatabaseImplement.Models
         [ForeignKey("SchoolSupplieId")]
         public virtual List<CircleSchoolSupplie> CircleSchoolSupplies { get; set; }
         [ForeignKey("SchoolSupplieId")]
-        public virtual List<RequestCircle> RequestCircles { get; set; }
+        public virtual List<RequestSchoolSupplie> RequestSchoolSupplie { get; set; }
     }
 }
