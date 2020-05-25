@@ -5,14 +5,14 @@ using System.Text;
 
 namespace SchoolDatabaseImplement.Models
 {
-    public class ProductJewerly
+    public class CircleSchoolSupplie
     {
         public int Id { get; set; }
         [Required]
         public int Count { get; set; }
-        public int ProductId { get; set; }
-        public int JewerlyId { get; set; }
-        public Product Product { get; set; }
-        public Jewerly Jewerly { get; set; }
+        public int SchoolSupplieId { get; set; }
+        public int CircleId { get; set; }
+        public SchoolSupplie SchoolSupplie { get; set; }
+        public Circle Circle { get; set; }
     }
 }

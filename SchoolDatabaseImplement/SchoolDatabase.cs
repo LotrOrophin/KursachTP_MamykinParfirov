@@ -8,14 +8,15 @@ namespace SchoolDatabaseImplement
 {
     public class SchoolDatabase
     {
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured == false)
             {
                 //optionsBuilder.UseSqlServer(@" ");
+                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-IMFQ926R\SQLEXPRESS;Initial Catalog=RestaurantDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
-        }*/
+        }
         public virtual DbSet<Box> Box { set; get; }
         public virtual DbSet<BoxJewerly> BoxJewerlies { set; get; }
         public virtual DbSet<RequestProduct> RequestProducts { set; get; }

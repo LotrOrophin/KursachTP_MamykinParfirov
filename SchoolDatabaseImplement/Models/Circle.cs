@@ -6,16 +6,16 @@ using System.Text;
 
 namespace SchoolDatabaseImplement.Models
 {
-    public class Jewerly
+    public class Circle
     {
         public int Id { get; set; }
         [Required]
-        public string JewerlyName { get; set; }
+        public string CircleName { get; set; }
         [Required]
         public decimal Price { get; set; }
-        [ForeignKey("JewerlyId")]
-        public virtual List<ProductJewerly> ProductJewerlies { get; set; }
-        [ForeignKey("ProductId")]
-        public virtual List<RequestProduct> RequestProducts { get; set; }
+        [ForeignKey("CircleId")]
+        public virtual List<Order> Orders { get; set; }
+        [ForeignKey("CircleId")]
+        public virtual List<CircleSchoolSupplie> CircleSchoolSupplies { get; set; }
     }
 }

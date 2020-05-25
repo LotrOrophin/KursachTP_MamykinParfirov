@@ -6,15 +6,16 @@ using System.Text;
 
 namespace SchoolDatabaseImplement.Models
 {
-    public class Box
+    public class WareHouse
     {
         public int Id { get; set; }
         [Required]
-        public string BoxName { get; set; }
+        public string FridgeName { get; set; }
         [Required]
         public int Capacity { get; set; }
-        [ForeignKey("BoxId")]
-        public virtual List<BoxJewerly> BoxJewerlies { get; set; }
+        public string Type { get; set; }
+        [ForeignKey("WareHouseId")]
+        public virtual List<WareHouseSchoolSupplie> WareHouseSchoolSupplies { get; set; }
         public Supplier Supplier { get; set; }
-    }
+        }
 }
