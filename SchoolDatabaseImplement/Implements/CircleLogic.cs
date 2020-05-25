@@ -1,8 +1,12 @@
 ﻿using AbstractSchoolBusinessLogic.BindingModels;
+using AbstractSchoolBusinessLogic.ViewModels;
 using AbstractSchoolBusinessLogic.Interfaces;
+using SchoolDatabaseImplement.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace SchoolDatabaseImplement.Implements
 {
@@ -16,15 +20,15 @@ namespace SchoolDatabaseImplement.Implements
                 {
                     try
                     {
-                        Dish element = context.Dishes.FirstOrDefault(rec =>
-                       rec.DishName == model.DishName && rec.Id != model.Id);
+                        Circle element = context.Circles.FirstOrDefault(rec =>
+                       rec.CircleName == model.CircleName && rec.Id != model.Id);
                         if (element != null)
                         {
                             throw new Exception("Уже есть изделие с таким названием");
                         }
                         if (model.Id.HasValue)
                         {
-                            element = context.Dishes.FirstOrDefault(rec => rec.Id ==
+                            element = context.Circles.FirstOrDefault(rec => rec.Id ==
                            model.Id);
                             if (element == null)
                             {
@@ -33,37 +37,37 @@ namespace SchoolDatabaseImplement.Implements
                         }
                         else
                         {
-                            element = new Dish();
-                            context.Dishes.Add(element);
+                            element = new Circle();
+                            context.Circles.Add(element);
                         }
-                        element.DishName = model.DishName;
-                        element.Price = model.Price;
+                        element.CircleName = model.CircleName;
+                        element.PricePerHour = model.Price;
                         context.SaveChanges();
                         if (model.Id.HasValue)
                         {
-                            var DishFoods = context.DishFoods.Where(rec
-                           => rec.DishId == model.Id.Value).ToList();
+                            var CircleSchoolSupplies = context.CircleSchoolSupplies.Where(rec
+                           => rec.CircleId == model.Id.Value).ToList();
                             // удалили те, которых нет в модели
-                            context.DishFoods.RemoveRange(DishFoods.Where(rec =>
-                            !model.DishFoods.ContainsKey(rec.FoodId)).ToList());
+                            context.CircleSchoolSupplies.RemoveRange(CircleSchoolSupplies.Where(rec =>
+                            !model.CircleSchoolSupplies.ContainsKey(rec.SchoolSupplieId)).ToList());
                             context.SaveChanges();
                             // обновили количество у существующих записей
-                            foreach (var updateFood in DishFoods)
+                            foreach (var updateSchoolSupplie in CircleSchoolSupplies)
                             {
-                                updateFood.Count =
-                               model.DishFoods[updateFood.FoodId].Item2;
+                                updateSchoolSupplie.Count =
+                               model.CircleSchoolSupplies[updateSchoolSupplie.SchoolSupplieId].Item2;
 
-                                model.DishFoods.Remove(updateFood.FoodId);
+                                model.CircleSchoolSupplies.Remove(updateSchoolSupplie.SchoolSupplieId);
                             }
                             context.SaveChanges();
                         }
                         // добавили новые
-                        foreach (var pc in model.DishFoods)
+                        foreach (var pc in model.CircleSchoolSupplies)
                         {
-                            context.DishFoods.Add(new DishFood
+                            context.CircleSchoolSupplies.Add(new CircleSchoolSupplie
                             {
-                                DishId = element.Id,
-                                FoodId = pc.Key,
+                                CircleId = element.Id,
+                                SchoolSupplieId = pc.Key,
                                 Count = pc.Value.Item2
                             });
                             context.SaveChanges();
@@ -78,22 +82,22 @@ namespace SchoolDatabaseImplement.Implements
                 }
             }
         }
-        public void Delete(DishBindingModel model)
+        public void Delete(CircleBindingModel model)
         {
-            using (var context = new RestaurantDatabase())
+            using (var context = new SchoolDatabase())
             {
                 using (var transaction = context.Database.BeginTransaction())
                 {
                     try
                     {
                         // удаяем записи по продуктам при удалении закуски
-                        context.DishFoods.RemoveRange(context.DishFoods.Where(rec =>
-                        rec.DishId == model.Id));
-                        Dish element = context.Dishes.FirstOrDefault(rec => rec.Id
+                        context.CircleSchoolSupplies.RemoveRange(context.CircleSchoolSupplies.Where(rec =>
+                        rec.CircleId == model.Id));
+                        Circle element = context.Circles.FirstOrDefault(rec => rec.Id
                         == model.Id);
                         if (element != null)
                         {
-                            context.Dishes.Remove(element);
+                            context.Circles.Remove(element);
                             context.SaveChanges();
                         }
                         else
@@ -110,20 +114,20 @@ namespace SchoolDatabaseImplement.Implements
                 }
             }
         }
-        public List<DishViewModel> Read(DishBindingModel model)
+        public List<CircleViewModel> Read(CircleBindingModel model)
         {
-            using (var context = new RestaurantDatabase())
+            using (var context = new SchoolDatabase())
             {
-                return context.Dishes.Where(rec => model == null || rec.Id == model.Id)
+                return context.Circles.Where(rec => model == null || rec.Id == model.Id)
                 .ToList()
-                .Select(rec => new DishViewModel
+                .Select(rec => new CircleViewModel
                 {
                     Id = rec.Id,
-                    DishName = rec.DishName,
-                    Price = rec.Price,
-                    DishFoods = context.DishFoods.Include(recPC => recPC.Food)
-                                                           .Where(recPC => recPC.DishId == rec.Id)
-                                                           .ToDictionary(recPC => recPC.FoodId, recPC => (recPC.Food?.FoodName, recPC.Count))
+                    CircleName = rec.CircleName,
+                    PricePerHour = rec.PricePerHour,
+                    CircleSchoolSupplies = context.CircleSchoolSupplies.Include(recPC => recPC.SchoolSupplie)
+                                                           .Where(recPC => recPC.CircleId == rec.Id)
+                                                           .ToDictionary(recPC => recPC.SchoolSupplieId, recPC => (recPC.SchoolSupplie?.SchoolSupplieName, recPC.Count))
                 }).ToList();
             }
         }

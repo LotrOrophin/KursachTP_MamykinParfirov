@@ -15,7 +15,7 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         public string CircleName { get; set; }
         [DisplayName("Цена за час")]
         public decimal PricePerHour { get; set; }
-        public Dictionary<int, (string, int)> SchoolSupplieCircles { get; set; }
+        public Dictionary<int, (string, int)> CircleSchoolSupplies { get; set; }
     }
 
 }

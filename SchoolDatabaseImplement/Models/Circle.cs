@@ -12,7 +12,7 @@ namespace SchoolDatabaseImplement.Models
         [Required]
         public string CircleName { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public decimal PricePerHour { get; set; }
         [ForeignKey("CircleId")]
         public virtual List<Order> Orders { get; set; }
         [ForeignKey("CircleId")]
