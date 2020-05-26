@@ -5823,11 +5823,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
+      "projectUniqueName": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
       "projectName": "SchoolDatabaseImplement",
-      "projectPath": "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
+      "projectPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
       "packagesPath": "C:\\Users\\mamyk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\obj\\",
+      "outputPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mamyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5843,8 +5843,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj"
+            "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj"
             }
           }
         }

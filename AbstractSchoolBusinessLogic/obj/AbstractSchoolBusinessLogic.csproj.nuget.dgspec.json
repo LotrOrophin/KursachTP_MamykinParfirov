@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {}
+    "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
+    "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
         "projectName": "AbstractSchoolBusinessLogic",
-        "projectPath": "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+        "projectPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
         "packagesPath": "C:\\Users\\mamyk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mamyk\\source\\repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\obj\\",
+        "outputPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mamyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
