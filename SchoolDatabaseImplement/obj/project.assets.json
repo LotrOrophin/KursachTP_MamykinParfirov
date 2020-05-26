@@ -5818,23 +5818,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Denis\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\mamyk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
+      "projectUniqueName": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
       "projectName": "SchoolDatabaseImplement",
-      "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
-      "packagesPath": "C:\\Users\\Denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\SchoolDatabaseImplement\\obj\\",
+      "projectPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\SchoolDatabaseImplement.csproj",
+      "packagesPath": "C:\\Users\\mamyk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\SchoolDatabaseImplement\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mamyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5847,8 +5843,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj"
+            "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj": {
+              "projectPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj"
             }
           }
         }
@@ -5877,16 +5873,23 @@
             "version": "[3.1.4, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -5895,7 +5898,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Пакет \"PDFsharp-MigraDoc 1.50.5147\" был восстановлен с помощью \".NETFramework,Version=v4.6.1\", а не целевой платформы проекта \".NETCoreApp,Version=v2.1\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "message": "Пакет \"PDFsharp-MigraDoc 1.50.5147\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \".NETCoreApp,Version=v2.1\". Этот пакет может быть не полностью совместим с вашим проектом.",
       "libraryId": "PDFsharp-MigraDoc",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"

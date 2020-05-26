@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractSchoolBusinessLogic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolDatabaseImplement", "SchoolDatabaseImplement\SchoolDatabaseImplement.csproj", "{F107BC6E-BD81-4325-AA17-CA807B1C1501}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolView", "SchoolView\SchoolView.csproj", "{E6F27E1D-682E-473C-97FA-94C787C2CACB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractSchoolView", "AbstractSchoolView\AbstractSchoolView.csproj", "{6E1F8F97-AAFC-48A7-AE0A-DE60496F2505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{F107BC6E-BD81-4325-AA17-CA807B1C1501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F107BC6E-BD81-4325-AA17-CA807B1C1501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F107BC6E-BD81-4325-AA17-CA807B1C1501}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6F27E1D-682E-473C-97FA-94C787C2CACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6F27E1D-682E-473C-97FA-94C787C2CACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6F27E1D-682E-473C-97FA-94C787C2CACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6F27E1D-682E-473C-97FA-94C787C2CACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E1F8F97-AAFC-48A7-AE0A-DE60496F2505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E1F8F97-AAFC-48A7-AE0A-DE60496F2505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E1F8F97-AAFC-48A7-AE0A-DE60496F2505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E1F8F97-AAFC-48A7-AE0A-DE60496F2505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
