@@ -10,12 +10,13 @@ namespace SchoolDatabaseImplement.Models
     {
         public int Id { get; set; }
         [Required]
-        public string FridgeName { get; set; }
+        public string WareHouseName { get; set; }
         [Required]
-        public int Capacity { get; set; }
+        public int Size { get; set; }
         public string Type { get; set; }
         [ForeignKey("WareHouseId")]
         public virtual List<WareHouseSchoolSupplie> WareHouseSchoolSupplies { get; set; }
         public Supplier Supplier { get; set; }
+        public int SupplierId { get; set; }
         }
 }

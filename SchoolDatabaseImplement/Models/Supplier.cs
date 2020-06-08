@@ -15,6 +15,10 @@ namespace SchoolDatabaseImplement.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
+
+       [ForeignKey("SupplierId")]
+        public virtual List<WareHouse> WareHouses { get; set; }
+        [ForeignKey("SupplierId")]
         public virtual List<Request> Requests { get; set; }
     }
 }

@@ -10,11 +10,11 @@ namespace SchoolDatabaseImplement.Models
     {
         public int Id { get; set; }
         [Required]
-        public string SchoolSupplieName { get; set; }
+        public string SchoolSupplieName { get; set; }   
         [Required]
         public decimal Price { get; set; }
         [ForeignKey("SchoolSupplieId")]
-        public virtual List<CircleSchoolSupplie> CircleSchoolSupplies { get; set; }
+        public virtual List<WareHouseSchoolSupplie> WareHouseSchoolSupplies { get; set; }
         [ForeignKey("SchoolSupplieId")]
         public virtual List<RequestSchoolSupplie> RequestSchoolSupplie { get; set; }
     }

@@ -6,9 +6,9 @@ namespace AbstractSchoolBusinessLogic.Enums
 {
     public enum RequestStatus
     {
-        Создана = 0,
+        Принята = 0,
         Выполняется = 1,
         Готова = 2,
-        Обработана = 3
+        Оплачена = 3
     }
 }

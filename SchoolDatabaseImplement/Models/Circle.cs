@@ -14,7 +14,7 @@ namespace SchoolDatabaseImplement.Models
         [Required]
         public decimal PricePerHour { get; set; }
         [ForeignKey("CircleId")]
-        public virtual List<Order> Orders { get; set; }
+        public virtual List<RequestSchoolSupplie> RequestSchoolSupplies { get; set; }
         [ForeignKey("CircleId")]
         public virtual List<CircleSchoolSupplie> CircleSchoolSupplies { get; set; }
     }
