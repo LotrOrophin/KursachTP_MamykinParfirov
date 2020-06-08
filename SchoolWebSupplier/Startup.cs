@@ -10,7 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
-
+using AbstractSchoolBusinessLogic.BusinessLogics;
+using SchoolDatabaseImplement.Implements;
 
 namespace SchoolWebSupplier
 {
@@ -30,7 +31,7 @@ namespace SchoolWebSupplier
             services.AddTransient<ISupplierLogic, SupplierLogic>();
             services.AddTransient<IRequestLogic, RequestLogic>();
             services.AddTransient<ICircleLogic, CircleLogic>();
-            services.AddTransient<IWareHouseLogic, FridgeLogic>();
+            services.AddTransient<IWareHouseLogic, WareHouseLogic>();
             services.AddTransient<SupplierBusinessLogic>();
             services.AddTransient<SupplierReportLogic>();
             services.AddTransient<BackUpAbstractLogic, BackUpLogic>();

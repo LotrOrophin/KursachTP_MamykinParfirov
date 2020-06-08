@@ -10,3 +10,14 @@ C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bi
 C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.csprojAssemblyReference.cache
 C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfoInputs.cache
 C:\Users\mamyk\source\repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.AssemblyInfo.cs
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.csproj.CoreCompileInputs.cache
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.deps.json
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.runtimeconfig.json
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.runtimeconfig.dev.json
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.dll
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\SchoolDatabaseImplement.pdb
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\bin\Debug\netcoreapp2.1\AbstractSchoolBusinessLogic.pdb
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.csproj.CopyComplete
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.dll
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.pdb
+C:\Users\mamyk\Source\Repos\KursachTP_MamykinParfirov\SchoolDatabaseImplement\obj\Debug\netcoreapp2.1\SchoolDatabaseImplement.genruntimeconfig.cache

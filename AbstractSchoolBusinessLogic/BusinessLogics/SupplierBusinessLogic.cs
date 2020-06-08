@@ -34,7 +34,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 Id = request.Id,
                 SupplierId = request.SupplierId,
                 Status = RequestStatus.Выполняется,
-                RequestSchoolSupllies = request.SchoolSupplies
+                SchoolSupllies = request.SchoolSupplies
             });
         }
 
@@ -57,7 +57,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 Id = request.Id,
                 SupplierId = request.SupplierId,
                 Status = RequestStatus.Готова,
-                RequestSchoolSupllies = request.SchoolSupplies
+                SchoolSupllies = request.SchoolSupplies
             });
         }
 

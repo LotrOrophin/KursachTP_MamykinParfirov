@@ -41,7 +41,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 throw new Exception("Не найден заказ");
             }
 
-            if (order.Status != OrderStatus.Принят)
+            if (order.OrderStatus != OrderStatus.Принят)
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
@@ -73,7 +73,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (order.Status != OrderStatus.Выполняется)
+            if (order.OrderStatus != OrderStatus.Выполняется)
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }
@@ -96,7 +96,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (order.Status != OrderStatus.Готов)
+            if (order.OrderStatus != OrderStatus.Готов)
             {
                 throw new Exception("Заказ не в статусе \"Готов\"");
             }
@@ -118,7 +118,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 Id = model.Id,
                 SupplierId = model.SupplierId,
                 Status = RequestStatus.Создана,
-                RequestSchoolSupllies = model.RequestSchoolSupllies
+                SchoolSupllies = model.SchoolSupllies
             });
         }
         public List<ReportCircleSchoolSupplieViewModel> GetCircleSchoolSuppliesOrder()

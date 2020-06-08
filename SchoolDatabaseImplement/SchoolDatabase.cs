@@ -21,8 +21,8 @@ namespace SchoolDatabaseImplement
         public virtual DbSet<SchoolSupplie> SchoolSupplies { set; get; }
         public virtual DbSet<CircleSchoolSupplie> CircleSchoolSupplies { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
-        public virtual DbSet<WareHouse> Products { set; get; }
         public virtual DbSet<WareHouseSchoolSupplie> WareHouseSchoolSupplies { set; get; }
+        public virtual DbSet<WareHouse> WareHouses { set; get; }
         public virtual DbSet<Request> Requests { set; get; }
         public virtual DbSet<RequestSchoolSupplie> RequestsSchoolSupplies { set; get; }
         public virtual DbSet<Supplier> Suppliers { set; get; }

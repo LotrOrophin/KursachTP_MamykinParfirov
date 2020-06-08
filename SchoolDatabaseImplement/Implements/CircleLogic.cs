@@ -7,6 +7,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace SchoolDatabaseImplement.Implements
 {
@@ -129,6 +132,31 @@ namespace SchoolDatabaseImplement.Implements
                                                            .Where(recPC => recPC.CircleId == rec.Id)
                                                            .ToDictionary(recPC => recPC.SchoolSupplieId, recPC => (recPC.SchoolSupplie?.SchoolSupplieName, recPC.Count))
                 }).ToList();
+            }
+        }
+        public void SaveJson(string folderName)
+        {
+            string fileName = $"{folderName}\\Circle.json";
+            using (var context = new SchoolDatabase())
+            {
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Circle>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, context.Circles);
+                }
+            }
+        }
+
+        public void SaveXml(string folderName)
+        {
+            string fileName = $"{folderName}\\Circle.xml";
+            using (var context = new SchoolDatabase())
+            {
+                XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<Circle>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    fomatter.Serialize(fs, context.Circles);
+                }
             }
         }
     }

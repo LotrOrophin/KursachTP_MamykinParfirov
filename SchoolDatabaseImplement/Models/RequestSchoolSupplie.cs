@@ -11,6 +11,8 @@ namespace SchoolDatabaseImplement.Models
         public int RequestId { get; set; }
         public int SchoolSupplieId { get; set; }
         [Required]
+        public bool Inres { get; set; }
+        [Required]
         public int Count { get; set; }
         public SchoolSupplie SchoolSupplie { get; set; }
         public Request Request { get; set; }

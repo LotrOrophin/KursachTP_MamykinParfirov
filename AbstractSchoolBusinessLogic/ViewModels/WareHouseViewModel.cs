@@ -11,8 +11,8 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         public int Id { get; set; }
         [DisplayName("Название склада")]
         public string WareHouseName { get; set; }
-        [DisplayName("Вместимость")]
-        public int Capacity { get; set; }
+        [DisplayName("Размер")]
+        public int Size { get; set; }
         [DisplayName("Тип склада")]
         public string Type { get; set; }
         public Dictionary<int, (string, int, int)> SchoolSupplies { get; set; }

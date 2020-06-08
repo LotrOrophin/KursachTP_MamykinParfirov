@@ -113,7 +113,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                 {
                     foreach (var date in info.Orders)
                     {
-                        if ((date.Status == Enums.OrderStatus.Оплачен) || (date.Status == Enums.OrderStatus.Готов))
+                        if ((date.OrderStatus == Enums.OrderStatus.Оплачен) || (date.OrderStatus == Enums.OrderStatus.Готов))
                         {
                             InsertCellInWorksheet(new ExcelCellParameters
                             {
@@ -142,7 +142,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                                 ShareStringPart = shareStringPart,
                                 ColumnName = "B",
                                 RowIndex = rowIndex,
-                                Text = date.Status + "",
+                                Text = date.OrderStatus + "",
                                 StyleIndex = 0U
                             });
 

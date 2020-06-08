@@ -90,7 +90,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 CircleName = x.CircleName,
                 Count = x.Count,
                 Amount = x.Sum,
-                Status = x.Status
+                OrderStatus = x.OrderStatus
             })
             .ToList();
         }
@@ -106,7 +106,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                     Amount = order.Sum,
                     Count = order.Count,
                     CreationDate = order.CreationDate,
-                    Status = order.Status
+                    OrderStatus = order.OrderStatus
                 };
                 list.Add(record);
             }

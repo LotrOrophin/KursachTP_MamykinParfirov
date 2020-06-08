@@ -11,7 +11,7 @@ namespace SchoolDatabaseImplement.Models
         public int WareHouseId { get; set; }
         public int SchoolSupplieId { get; set; }
         [Required]
-        public int Count { get; set; }
+        public int Free { get; set; }
         [Required]
         public int IsReserved { get; set; }
         public WareHouse WareHouse { get; set; }

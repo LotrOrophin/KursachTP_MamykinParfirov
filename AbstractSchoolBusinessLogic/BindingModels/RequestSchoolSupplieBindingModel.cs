@@ -6,7 +6,7 @@ namespace AbstractSchoolBusinessLogic.BindingModels
 {
     public class RequestSchoolSupplieBindingModel
     {
-        public int RequestId { get; set; }
+        public int WareHouseId { get; set; }
         public int SchoolSupplieId { get; set; }
         public int Count { get; set; }
     }

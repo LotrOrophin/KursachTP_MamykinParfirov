@@ -4,11 +4,12 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.BindingModels
 {
-    public class WareHouseBingingModel
+    public class WareHouseBindingModel
     {
         public int? Id { get; set; }
+        public int SupplierId {get;set;}
         public string WareHouseName { get; set; }
-        public int Capacity { get; set; }
+        public int Size { get; set; }
         public string Type { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         [DisplayName("ФИО")]
         public string SupplierFIO { get; set; }
         [DisplayName("Логин")]
-        public string Login { get; set; }
+        public string Email { get; set; }
         [DisplayName("Пароль")]
         public string Password { get; set; }
     }

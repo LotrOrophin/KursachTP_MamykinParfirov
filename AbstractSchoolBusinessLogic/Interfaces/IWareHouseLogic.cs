@@ -8,9 +8,9 @@ namespace AbstractSchoolBusinessLogic.Interfaces
 {
     public interface IWareHouseLogic
     {
-        List<WareHouseViewModel> Read(WareHouseBingingModel model);
-        void CreateOrUpdate(WareHouseBingingModel model);
-        void Delete(WareHouseBingingModel model);
+        List<WareHouseViewModel> Read(WareHouseBindingModel model);
+        void CreateOrUpdate(WareHouseBindingModel model);
+        void Delete(WareHouseBindingModel model);
         void AddSchoolSupplie(RequestSchoolSupplieBindingModel model);
         void ReserveSchoolSupplies(RequestSchoolSupplieBindingModel model);
         List<WareHouseAvailableViewModel> GetWareHouseAvailable(RequestSchoolSupplieBindingModel model);

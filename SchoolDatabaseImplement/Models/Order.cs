@@ -17,7 +17,7 @@ namespace SchoolDatabaseImplement.Models
         public decimal Sum { get; set; }
         public DateTime? CompletionDate { get; set; }
         [Required]
-        public OrderStatus Status { get; set; }
+        public OrderStatus OrderStatus { get; set; }
         public int CircleId { get; set; }
         public Circle Circle { get; set; }
     }

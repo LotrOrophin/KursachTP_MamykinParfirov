@@ -18,7 +18,7 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         [DisplayName("Дата завершения")]
         public DateTime? CompletionDate { get; set; }
         [DisplayName("Статус")]
-        public OrderStatus Status { get; set; }
+        public OrderStatus OrderStatus { get; set; }
         public int CircleId { get; set; }
         [DisplayName("Название кружка")]
         public string CircleName { get; set; }

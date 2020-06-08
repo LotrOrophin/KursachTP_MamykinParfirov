@@ -31,11 +31,11 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                 {
                     foreach (var orders in info.Orders)
                     {
-                        if ((orders.Status == Enums.OrderStatus.Готов) || (orders.Status == Enums.OrderStatus.Оплачен))
+                        if ((orders.OrderStatus == Enums.OrderStatus.Готов) || (orders.OrderStatus == Enums.OrderStatus.Оплачен))
                         {
                             docBody.AppendChild(CreateParagraph(new WordParagraph
                             {
-                                Texts = new List<string> { "Статус: " + orders.Status.ToString() + ", " +
+                                Texts = new List<string> { "Статус: " + orders.OrderStatus.ToString() + ", " +
                                 orders.Amount + "руб., " + orders.Count + "шт., Дата создания: " + orders.CreationDate},
                                 TextProperties = new WordParagraphProperties
                                 {
