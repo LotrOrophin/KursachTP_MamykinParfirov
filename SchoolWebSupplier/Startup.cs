@@ -29,15 +29,15 @@ namespace SchoolWebSupplier
             services.AddControllersWithViews();
             services.AddTransient<ISupplierLogic, SupplierLogic>();
             services.AddTransient<IRequestLogic, RequestLogic>();
-            services.AddTransient<ISchoolSupplieLogic, ComponentLogic>();
-            services.AddTransient<IWareHouseLogic, WareHouseLogic>();
-
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddTransient<ICircleLogic, CircleLogic>();
+            services.AddTransient<IWareHouseLogic, FridgeLogic>();
+            services.AddTransient<SupplierBusinessLogic>();
+            services.AddTransient<SupplierReportLogic>();
+            services.AddTransient<BackUpAbstractLogic, BackUpLogic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -46,18 +46,21 @@ namespace SchoolWebSupplier
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

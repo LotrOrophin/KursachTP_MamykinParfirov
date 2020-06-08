@@ -73,7 +73,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                         Texts = new List<string>
                     {
                         wc.SchoolSupplieName,
-                        wc.WareHouseName,
+                        wc.WarehouseName,
                         wc.Count.ToString()
                     },
                         Style = "Normal",

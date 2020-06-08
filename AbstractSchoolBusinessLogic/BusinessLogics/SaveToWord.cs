@@ -27,61 +27,75 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                     }
                 }));
 
-                if (info.Circles != null)
+                if (info.Orders != null)
                 {
-                    foreach (var product in info.Circles)
+                    foreach (var orders in info.Orders)
                     {
-                        docBody.AppendChild(CreateParagraph(new WordParagraph
+                        if ((orders.Status == Enums.OrderStatus.Готов) || (orders.Status == Enums.OrderStatus.Оплачен))
                         {
-                            Texts = new List<string> { product.CircleName, " - " + product.PricePerHour.ToString() },
-                            TextProperties = new WordParagraphProperties
+                            docBody.AppendChild(CreateParagraph(new WordParagraph
                             {
-                                Bold = true,
-                                Size = "24",
-                                JustificationValues = JustificationValues.Both
+                                Texts = new List<string> { "Статус: " + orders.Status.ToString() + ", " +
+                                orders.Amount + "руб., " + orders.Count + "шт., Дата создания: " + orders.CreationDate},
+                                TextProperties = new WordParagraphProperties
+                                {
+                                    Bold = false,
+                                    Size = "24",
+                                    JustificationValues = JustificationValues.Both
+                                }
+                            }));
+
+                            docBody.AppendChild(CreateParagraph(new WordParagraph
+                            {
+                                Texts = new List<string> { "Кружок: " + orders.CircleName },
+                                TextProperties = new WordParagraphProperties
+                                {
+                                    Bold = false,
+                                    Size = "24",
+                                    JustificationValues = JustificationValues.Both
+                                }
+                            }));
+
+                            docBody.AppendChild(CreateParagraph(new WordParagraph
+                            {
+                                Texts = new List<string> { "Канцелярия: " },
+                                TextProperties = new WordParagraphProperties
+                                {
+                                    Bold = false,
+                                    Size = "24",
+                                    JustificationValues = JustificationValues.Both
+                                }
+                            }));
+
+                            foreach (var dish in info.CircleSchoolSupplies)
+                            {
+                                if (dish.CircleName == orders.CircleName)
+                                {
+                                    docBody.AppendChild(CreateParagraph(new WordParagraph
+                                    {
+                                        Texts = new List<string> { dish.SchoolSupplieName },
+                                        TextProperties = new WordParagraphProperties
+                                        {
+                                            Bold = false,
+                                            Size = "24",
+                                            JustificationValues = JustificationValues.Both
+                                        }
+                                    }));
+                                }
                             }
-                        }));
+                            docBody.AppendChild(CreateParagraph(new WordParagraph
+                            {
+                                Texts = new List<string> { "" },
+                                TextProperties = new WordParagraphProperties
+                                {
+                                    Bold = false,
+                                    Size = "24",
+                                    JustificationValues = JustificationValues.Both
+                                }
+                            }));
+                        }
                     }
                 }
-                else if (info.Warehouses != null)
-                {
-                    Table table = new Table();
-
-                    TableProperties props = new TableProperties(
-                        new TableBorders(
-                            new TopBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                            new BottomBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                            new LeftBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                            new RightBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                            new InsideHorizontalBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 },
-                            new InsideVerticalBorder { Val = new EnumValue<BorderValues>(BorderValues.Single), Size = 12 }
-                    ));
-
-                    table.AppendChild(props);
-
-                    foreach (var warehouse in info.Warehouses)
-                    {
-                        var tr = new TableRow();
-                        var tc = new TableCell();
-
-                        tc.Append(CreateParagraph(new WordParagraph
-                        {
-                            Texts = new List<string> { warehouse.WareHouseName },
-                            TextProperties = new WordParagraphProperties
-                            {
-                                Bold = false,
-                                Size = "24",
-                                JustificationValues = JustificationValues.Both
-                            }
-                        }));
-
-                        tr.AppendChild(tc);
-                        table.AppendChild(tr);
-                    }
-
-                    docBody.AppendChild(table);
-                }
-
                 docBody.AppendChild(CreateSectionProperties());
                 wordDocument.MainDocumentPart.Document.Save();
             }

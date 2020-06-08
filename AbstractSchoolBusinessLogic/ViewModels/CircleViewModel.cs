@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace AbstractSchoolBusinessLogic.ViewModels
 {
-    /// <summary>
-    /// Компонент, требуемый для изготовления изделия
-    /// </summary>
+    [DataContract]
     public class CircleViewModel
     {
+        [DataMember]
         public int Id { get; set; }
-        [DisplayName("Название Кружка")]
+        [DataMember]
+        [DisplayName("Название блюда")]
         public string CircleName { get; set; }
-        [DisplayName("Цена за час")]
-        public decimal PricePerHour { get; set; }
+        [DataMember]
+        [DisplayName("Цена")]
+        public decimal Price { get; set; }
+        [DataMember]
         public Dictionary<int, (string, int)> CircleSchoolSupplies { get; set; }
     }
-
 }

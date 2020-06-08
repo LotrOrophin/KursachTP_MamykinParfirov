@@ -4,10 +4,8 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.BindingModels
 {
-    public class RequestSchoolSupplieBindingModel
+    public class ChangeRequestStatusBindingModel
     {
         public int RequestId { get; set; }
-        public int SchoolSupplieId { get; set; }
-        public int Count { get; set; }
     }
 }

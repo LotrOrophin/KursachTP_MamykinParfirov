@@ -8,7 +8,7 @@ namespace AbstractSchoolBusinessLogic.ViewModels
     public class SchoolSupplieViewModel
     {
         public int Id { get; set; }
-        [DisplayName("Название канцелярии")]
+        [DisplayName("Название продукта")]
         public string SchoolSupplieName { get; set; }
         [DisplayName("Цена")]
         public decimal Price { get; set; }

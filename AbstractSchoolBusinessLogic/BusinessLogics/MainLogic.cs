@@ -1,6 +1,7 @@
 ﻿using AbstractSchoolBusinessLogic.BindingModels;
 using AbstractSchoolBusinessLogic.Enums;
 using AbstractSchoolBusinessLogic.Interfaces;
+using AbstractSchoolBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,20 +11,22 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
     public class MainLogic
     {
         private readonly IOrderLogic orderLogic;
-        private readonly IWareHouseLogic wareHouseLogic;
+        private readonly IRequestLogic requestLogic;
+        private readonly ICircleLogic circleLogic;
 
-        public MainLogic(IOrderLogic orderLogic, IWareHouseLogic wareHouseLogic)
+        public MainLogic(IOrderLogic orderLogic, IRequestLogic requestLogic, ICircleLogic circleLogic)
         {
             this.orderLogic = orderLogic;
-            this.wareHouseLogic = wareHouseLogic;
+            this.requestLogic = requestLogic;
+            this.circleLogic = circleLogic;
         }
 
-        public void CreateOrder(CircleSchoolSupplieBindingModel model)
+        public void CreateOrder(OrderBindingModel order)
         {
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
-                CircleId = model.CircleId,
-                Count = model.Count,
+                CircleId = order.CircleId,
+                Count = order.Count,
                 CreationDate = DateTime.Now,
                 OrderStatus = OrderStatus.Принят
             });
@@ -32,18 +35,25 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {
             var order = orderLogic.Read(new OrderBindingModel { Id = model.OrderId })?[0];
-
+            var request = requestLogic.Read(new RequestBindingModel { Id = model.OrderId })?[0];
             if (order == null)
             {
                 throw new Exception("Не найден заказ");
             }
 
-            if (order.OrderStatus != OrderStatus.Принят)
+            if (order.Status != OrderStatus.Принят)
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
 
-            wareHouseLogic.RemoveFromWareHouse(order);
+            if (request.Status != RequestStatus.Готова)
+            {
+                throw new Exception("Продукты ещё не доставлены");
+            }
+            requestLogic.CreateOrUpdate(new RequestBindingModel
+            {
+                Status = RequestStatus.Обработана
+            });
 
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
@@ -63,7 +73,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (order.OrderStatus != OrderStatus.Выполняется)
+            if (order.Status != OrderStatus.Выполняется)
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }
@@ -86,7 +96,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (order.OrderStatus != OrderStatus.Готов)
+            if (order.Status != OrderStatus.Готов)
             {
                 throw new Exception("Заказ не в статусе \"Готов\"");
             }
@@ -101,10 +111,34 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 OrderStatus = OrderStatus.Оплачен
             });
         }
-
-        public void ReplanishFridge(WareHouseSchoolSupplieBindingModel model)
+        public void CreateOrUpdateRequest(RequestBindingModel model)
         {
-            wareHouseLogic.AddSchoolSupplie(model);
+            requestLogic.CreateOrUpdate(new RequestBindingModel
+            {
+                Id = model.Id,
+                SupplierId = model.SupplierId,
+                Status = RequestStatus.Создана,
+                RequestSchoolSupllies = model.RequestSchoolSupllies
+            });
+        }
+        public List<ReportCircleSchoolSupplieViewModel> GetCircleSchoolSuppliesOrder()
+        {
+            var circles = circleLogic.Read(null);
+            var list = new List<ReportCircleSchoolSupplieViewModel>();
+            foreach (var circle in circles)
+            {
+                foreach (var pc in circle.CircleSchoolSupplies)
+                {
+                    var record = new ReportCircleSchoolSupplieViewModel
+                    {
+                        CircleName = circle.CircleName,
+                        SchoolSupplieName = pc.Value.Item1,
+                        Count = pc.Value.Item2
+                    };
+                    list.Add(record);
+                }
+            }
+            return list;
         }
     }
 }

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.Serialization;
 using System.Text;
 
 namespace AbstractSchoolBusinessLogic.ViewModels
@@ -19,9 +18,9 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         [DisplayName("Дата завершения")]
         public DateTime? CompletionDate { get; set; }
         [DisplayName("Статус")]
-        public OrderStatus OrderStatus { get; set; }
+        public OrderStatus Status { get; set; }
         public int CircleId { get; set; }
-        public string SchoolSupplieName { get; set; }
-
+        [DisplayName("Название кружка")]
+        public string CircleName { get; set; }
     }
 }

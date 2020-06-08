@@ -5,11 +5,11 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.ViewModels
 {
-    public class RequestSchoolSupplieViewModel
+    public class WareHouseAvailableViewModel
     {
-        public int Id { get; set; }
-        public int RequestId { get; set; }
-        public int SchoolSupplieId { get; set; }
+        [DisplayName("Склад")]
+        public string WareHouseName { get; set; }
+        public int WareHouseId { get; set; }
         [DisplayName("Количество")]
         public int Count { get; set; }
     }

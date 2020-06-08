@@ -7,8 +7,8 @@ namespace AbstractSchoolBusinessLogic.BindingModels
     public class SupplierBindingModel
     {
         public int? Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
         public string SupplierFIO { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

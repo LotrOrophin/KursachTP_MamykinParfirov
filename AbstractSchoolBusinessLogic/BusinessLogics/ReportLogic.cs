@@ -6,6 +6,8 @@ using AbstractSchoolBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 
 namespace AbstractSchoolBusinessLogic.BusinessLogics
 {
@@ -22,17 +24,17 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             this.warehouseLogic = warehouseLogic;
         }
 
-        public List<ReportCircleSchoolSupplieViewModel> GetCircleSchoolSupplie()
+        public List<ReportCircleSchoolSupplieViewModel> GetCircleSchoolSupplies()
         {
-            var dishes = circleLogic.Read(null);
+            var circles = circleLogic.Read(null);
             var list = new List<ReportCircleSchoolSupplieViewModel>();
-            foreach (var dish in dishes)
+            foreach (var circle in circles)
             {
-                foreach (var pc in dish.SchoolSupplieCircles)
+                foreach (var pc in circle.CircleSchoolSupplies)
                 {
                     var record = new ReportCircleSchoolSupplieViewModel
                     {
-                        CircleName = dish.CircleName,
+                        CircleName = circle.CircleName,
                         SchoolSupplieName = pc.Value.Item1,
                         Count = pc.Value.Item2
                     };
@@ -44,15 +46,15 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
 
         public List<ReportWareHouseSchoolSupplieViewModel> GetWarehouseSchoolSupplie()
         {
-            var fridges = warehouseLogic.Read(null);
+            var warehouses = warehouseLogic.Read(null);
             var list = new List<ReportWareHouseSchoolSupplieViewModel>();
-            foreach (var fridge in fridges)
+            foreach (var warehouse in warehouses)
             {
-                foreach (var ff in fridge.WareHouseSchoolSupplies)
+                foreach (var ff in warehouse.SchoolSupplies)
                 {
                     var record = new ReportWareHouseSchoolSupplieViewModel
                     {
-                        WareHouseName = fridge.WareHouseName,
+                        WarehouseName = warehouse.WareHouseName,
                         SchoolSupplieName = ff.Value.Item1,
                         Count = ff.Value.Item2
                     };
@@ -75,7 +77,58 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             .ToList();
             return list;
         }
-
+        public List<ReportOrdersViewModel> GetOrder(ReportBindingModel model)
+        {
+            return orderLogic.Read(new OrderBindingModel
+            {
+                DateFrom = model.DateFrom,
+                DateTo = model.DateTo
+            })
+            .Select(x => new ReportOrdersViewModel
+            {
+                CreationDate = x.CreationDate,
+                CircleName = x.CircleName,
+                Count = x.Count,
+                Amount = x.Sum,
+                Status = x.Status
+            })
+            .ToList();
+        }
+        public List<ReportOrdersViewModel> GetReportOrder(ReportBindingModel model)
+        {
+            var orders = orderLogic.Read(null);
+            var list = new List<ReportOrdersViewModel>();
+            foreach (var order in orders)
+            {
+                var record = new ReportOrdersViewModel
+                {
+                    CircleName = order.CircleName,
+                    Amount = order.Sum,
+                    Count = order.Count,
+                    CreationDate = order.CreationDate,
+                    Status = order.Status
+                };
+                list.Add(record);
+            }
+            return list;
+        }
+        public void SaveOrdersToWordFile(ReportBindingModel model)
+        {
+            try
+            {
+                SaveToWord.CreateDoc(new WordInfo
+                {
+                    FileName = model.FileName,
+                    Title = "Список выполненных заказов",
+                    Orders = GetReportOrder(model),
+                    CircleSchoolSupplies = GetCircleSchoolSupplies()
+                });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public void SaveCirclesToWordFile(ReportBindingModel model)
         {
             SaveToWord.CreateDoc(new WordInfo
@@ -92,9 +145,9 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = model.FileName,
-                Title = "Список заказов",
-                Orders = GetOrders(model),
-                Warehouses = null
+                Title = "Список выполненных заказов",
+                Orders = GetReportOrder(model),
+                CircleSchoolSupplies = GetCircleSchoolSupplies()
             });
         }
 
@@ -104,42 +157,22 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 FileName = model.FileName,
                 Title = "Список кружков по канцелярии",
-                SchoolSuppliesCircles = GetCircleSchoolSupplie(),
+                SchoolSuppliesCircles = GetCircleSchoolSupplies(),
                 WarehouseSchoolSupplies = null
             });
         }
-
-        public void SaveFridgesToWordFile(ReportBindingModel model)
+        public void SendMail(string email, string fileName, string subject)
         {
-            SaveToWord.CreateDoc(new WordInfo
-            {
-                FileName = model.FileName,
-                Title = "Список складов",
-                Circles = null,
-                Warehouses = warehouseLogic.Read(null)
-            });
+            MailAddress from = new MailAddress("denis_73007@mail.ru", "Школа");
+            MailAddress to = new MailAddress(email);
+            MailMessage m = new MailMessage(from, to);
+            m.Subject = subject;
+            m.Attachments.Add(new Attachment(fileName));
+            SmtpClient smtp = new SmtpClient("detark322@gmail.com", 587);
+            smtp.Credentials = new NetworkCredential("denis_73007@mail.ru", "1");
+            smtp.EnableSsl = true;
+            smtp.Send(m);
         }
 
-        public void SaveFridgeFoodsToExcelFile(ReportBindingModel model)
-        {
-            SaveToExcel.CreateDoc(new ExcelInfo
-            {
-                FileName = model.FileName,
-                Title = "Список канцелярии на складе",
-                Orders = null,
-                Warehouses = warehouseLogic.Read(null)
-            });
-        }
-
-        public void SaveSchoolSuppliesToPdfFile(ReportBindingModel model)
-        {
-            SaveToPdf.CreateDoc(new PdfInfo
-            {
-                FileName = model.FileName,
-                Title = "Список канцелярии",
-                SchoolSuppliesCircles = null,
-                WarehouseSchoolSupplies = GetWarehouseSchoolSupplie()
-            });
-        }
     }
 }

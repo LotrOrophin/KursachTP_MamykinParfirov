@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.Serialization;
 using System.Text;
 
 namespace AbstractSchoolBusinessLogic.ViewModels
@@ -12,7 +11,7 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         [DisplayName("ФИО")]
         public string SupplierFIO { get; set; }
         [DisplayName("Логин")]
-        public string Email { get; set; }
+        public string Login { get; set; }
         [DisplayName("Пароль")]
         public string Password { get; set; }
     }

@@ -8,18 +8,13 @@ namespace AbstractSchoolBusinessLogic.ViewModels
 {
     public class RequestViewModel
     {
+        [DisplayName("Номер заявки")]
         public int Id { get; set; }
         public int SupplierId { get; set; }
         [DisplayName("ФИО")]
         public string SupplierFIO { get; set; }
-        [DisplayName("Сумма")]
-        public decimal Sum { get; set; }
-        [DisplayName("Дата создания")]
-        public DateTime DateCreate { get; set; }
-        [DisplayName("Дата выполнения")]
-        public DateTime? DateImplement { get; set; }
         [DisplayName("Статус")]
-        public OrderStatus OrderStatus { get; set; }
-        public List<RequestSchoolSupplieViewModel> RequestSchoolSupplies { get; set; }
+        public RequestStatus Status { get; set; }
+        public Dictionary<int, (string, int, bool)> SchoolSupplies { get; set; }
     }
 }

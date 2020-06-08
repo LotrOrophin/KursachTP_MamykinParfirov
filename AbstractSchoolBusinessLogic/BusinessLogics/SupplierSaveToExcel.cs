@@ -1,45 +1,32 @@
-﻿using DocumentFormat.OpenXml;
+﻿
+using AbstractSchoolBusinessLogic.HelperModels;
+using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using DocumentFormat.OpenXml.Office2013.Excel;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
-using AbstractSchoolBusinessLogic.HelperModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace AbstractSchoolBusinessLogic.BusinessLogic
+namespace AbstractSchoolBusinessLogic.BusinessLogics
 {
-    static class SaveToExcel
+    public class SupplierSaveToExcel
     {
         public static void CreateDoc(ExcelInfo info)
         {
             using (SpreadsheetDocument spreadsheetDocument = SpreadsheetDocument.Create(info.FileName, SpreadsheetDocumentType.Workbook))
             {
-                // Создаем книгу (в ней хранятся листы)
                 WorkbookPart workbookpart = spreadsheetDocument.AddWorkbookPart();
                 workbookpart.Workbook = new Workbook();
                 CreateStyles(workbookpart);
-
-                // Получаем/создаем хранилище текстов для книги
-                SharedStringTablePart shareStringPart =
-                spreadsheetDocument.WorkbookPart.GetPartsOfType<SharedStringTablePart>().Count() > 0
-                ?
-                spreadsheetDocument.WorkbookPart.GetPartsOfType<SharedStringTablePart>().First()
-                :
-                spreadsheetDocument.WorkbookPart.AddNewPart<SharedStringTablePart>();
-
-                // Создаем SharedStringTable, если его нет
+                SharedStringTablePart shareStringPart = spreadsheetDocument.WorkbookPart.GetPartsOfType<SharedStringTablePart>().Count() > 0
+                ? spreadsheetDocument.WorkbookPart.GetPartsOfType<SharedStringTablePart>().First()
+                : spreadsheetDocument.WorkbookPart.AddNewPart<SharedStringTablePart>();
                 if (shareStringPart.SharedStringTable == null)
                 {
                     shareStringPart.SharedStringTable = new SharedStringTable();
                 }
-
-                // Создаем лист в книгу
                 WorksheetPart worksheetPart = workbookpart.AddNewPart<WorksheetPart>();
                 worksheetPart.Worksheet = new Worksheet(new SheetData());
-
-                // Добавляем лист в книгу
                 Sheets sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild<Sheets>(new Sheets());
                 Sheet sheet = new Sheet()
                 {
@@ -47,7 +34,6 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                     SheetId = 1,
                     Name = "Лист"
                 };
-
                 sheets.Append(sheet);
                 InsertCellInWorksheet(new ExcelCellParameters
                 {
@@ -58,169 +44,104 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                     Text = info.Title,
                     StyleIndex = 2U
                 });
-
+                InsertCellInWorksheet(new ExcelCellParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    ShareStringPart = shareStringPart,
+                    ColumnName = "A",
+                    RowIndex = 2,
+                    Text = "Поставщик:" + " " + info.SupplierFIO,
+                    StyleIndex = 0U
+                });
+                InsertCellInWorksheet(new ExcelCellParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    ShareStringPart = shareStringPart,
+                    ColumnName = "A",
+                    RowIndex = 3,
+                    Text = "Дата выполнения:" + " " + info.DateComplete.ToString(),
+                    StyleIndex = 0U
+                });
                 MergeCells(new ExcelMergeParameters
                 {
                     Worksheet = worksheetPart.Worksheet,
                     CellFromName = "A1",
                     CellToName = "C1"
                 });
-
-
-
+                MergeCells(new ExcelMergeParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    CellFromName = "A2",
+                    CellToName = "C2"
+                });
+                MergeCells(new ExcelMergeParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    CellFromName = "A3",
+                    CellToName = "C3"
+                });
+                InsertCellInWorksheet(new ExcelCellParameters
+                {
+                    Worksheet = worksheetPart.Worksheet,
+                    ShareStringPart = shareStringPart,
+                    ColumnName = "A",
+                    RowIndex = 4,
+                    Text = "№ продукта",
+                    StyleIndex = 0U
+                });
                 InsertCellInWorksheet(new ExcelCellParameters
                 {
                     Worksheet = worksheetPart.Worksheet,
                     ShareStringPart = shareStringPart,
                     ColumnName = "B",
-                    RowIndex = 2,
-                    Text = "Статус заказа",
-                    StyleIndex = 2U
+                    RowIndex = 4,
+                    Text = "Продукт",
+                    StyleIndex = 0U
                 });
-
                 InsertCellInWorksheet(new ExcelCellParameters
                 {
                     Worksheet = worksheetPart.Worksheet,
                     ShareStringPart = shareStringPart,
                     ColumnName = "C",
-                    RowIndex = 2,
+                    RowIndex = 4,
                     Text = "Количество",
-                    StyleIndex = 2U
+                    StyleIndex = 0U
                 });
-
-                InsertCellInWorksheet(new ExcelCellParameters
+                uint i = 1;
+                foreach (var food in info.SchoolSupplies)
                 {
-                    Worksheet = worksheetPart.Worksheet,
-                    ShareStringPart = shareStringPart,
-                    ColumnName = "D",
-                    RowIndex = 2,
-                    Text = "Сумма",
-                    StyleIndex = 2U
-                });
-
-                InsertCellInWorksheet(new ExcelCellParameters
-                {
-                    Worksheet = worksheetPart.Worksheet,
-                    ShareStringPart = shareStringPart,
-                    ColumnName = "E",
-                    RowIndex = 2,
-                    Text = "Дата создания",
-                    StyleIndex = 2U
-                });
-
-                uint rowIndex = 2;
-                if (info.Orders != null)
-                {
-                    foreach (var date in info.Orders)
+                    InsertCellInWorksheet(new ExcelCellParameters
                     {
-                        if ((date.Status == Enums.OrderStatus.Оплачен) || (date.Status == Enums.OrderStatus.Готов))
-                        {
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "A",
-                                RowIndex = rowIndex,
-                                Text = "Кружок",
-                                StyleIndex = 2U
-                            });
-                            rowIndex++;
-
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "A",
-                                RowIndex = rowIndex,
-                                Text = date.CircleName,
-                                StyleIndex = 0U
-                            });
-
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "B",
-                                RowIndex = rowIndex,
-                                Text = date.Status + "",
-                                StyleIndex = 0U
-                            });
-
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "C",
-                                RowIndex = rowIndex,
-                                Text = date.Count + "",
-                                StyleIndex = 0U
-                            });
-
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "D",
-                                RowIndex = rowIndex,
-                                Text = date.Amount + "",
-                                StyleIndex = 0U
-                            });
-
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "E",
-                                RowIndex = rowIndex,
-                                Text = date.CreationDate + "",
-                                StyleIndex = 0U
-                            });
-
-                            rowIndex++;
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "A",
-                                RowIndex = rowIndex,
-                                Text = "Канцлерия: ",
-                                StyleIndex = 1U
-                            });
-                            rowIndex++;
-                            foreach (var dish in info.CircleSchoolSupplies)
-                            {
-                                if (dish.CircleName == date.CircleName)
-                                {
-                                    InsertCellInWorksheet(new ExcelCellParameters
-                                    {
-                                        Worksheet = worksheetPart.Worksheet,
-                                        ShareStringPart = shareStringPart,
-                                        ColumnName = "A",
-                                        RowIndex = rowIndex,
-                                        Text = dish.SchoolSupplieName,
-                                        StyleIndex = 0U
-                                    });
-                                    rowIndex++;
-                                }
-                            }
-
-                            InsertCellInWorksheet(new ExcelCellParameters
-                            {
-                                Worksheet = worksheetPart.Worksheet,
-                                ShareStringPart = shareStringPart,
-                                ColumnName = "A",
-                                RowIndex = rowIndex,
-                                Text = "",
-                                StyleIndex = 0U
-                            });
-                            rowIndex++;
-                        }
-                    }
+                        Worksheet = worksheetPart.Worksheet,
+                        ShareStringPart = shareStringPart,
+                        ColumnName = "A",
+                        RowIndex = i + 4,
+                        Text = food.Key.ToString(),
+                        StyleIndex = 0U
+                    });
+                    InsertCellInWorksheet(new ExcelCellParameters
+                    {
+                        Worksheet = worksheetPart.Worksheet,
+                        ShareStringPart = shareStringPart,
+                        ColumnName = "B",
+                        RowIndex = i + 4,
+                        Text = food.Value.Item1,
+                        StyleIndex = 0U
+                    });
+                    InsertCellInWorksheet(new ExcelCellParameters
+                    {
+                        Worksheet = worksheetPart.Worksheet,
+                        ShareStringPart = shareStringPart,
+                        ColumnName = "C",
+                        RowIndex = i + 4,
+                        Text = food.Value.Item2.ToString(),
+                        StyleIndex = 0U
+                    });
+                    i++;
                 }
                 workbookpart.Workbook.Save();
             }
         }
-
         private static void CreateStyles(WorkbookPart workbookpart)
         {
             WorkbookStylesPart sp = workbookpart.AddNewPart<WorkbookStylesPart>();
@@ -228,14 +149,20 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
             Fonts fonts = new Fonts() { Count = (UInt32Value)2U, KnownFonts = true };
             Font fontUsual = new Font();
             fontUsual.Append(new FontSize() { Val = 12D });
-            fontUsual.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color() { Theme = (UInt32Value)1U });
+            fontUsual.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
+            {
+                Theme = (UInt32Value)1U
+            });
             fontUsual.Append(new FontName() { Val = "Times New Roman" });
             fontUsual.Append(new FontFamilyNumbering() { Val = 2 });
             fontUsual.Append(new FontScheme() { Val = FontSchemeValues.Minor });
             Font fontTitle = new Font();
             fontTitle.Append(new Bold());
             fontTitle.Append(new FontSize() { Val = 14D });
-            fontTitle.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color() { Theme = (UInt32Value)1U });
+            fontTitle.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
+            {
+                Theme = (UInt32Value)1U
+            });
             fontTitle.Append(new FontName() { Val = "Times New Roman" });
             fontTitle.Append(new FontFamilyNumbering() { Val = 2 });
             fontTitle.Append(new FontScheme() { Val = FontSchemeValues.Minor });
@@ -257,13 +184,31 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
             borderNoBorder.Append(new DiagonalBorder());
             Border borderThin = new Border();
             LeftBorder leftBorder = new LeftBorder() { Style = BorderStyleValues.Thin };
-            leftBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color() { Indexed = (UInt32Value)64U });
-            RightBorder rightBorder = new RightBorder() { Style = BorderStyleValues.Thin };
-            rightBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color() { Indexed = (UInt32Value)64U });
+            leftBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
+            {
+                Indexed = (UInt32Value)64U
+            });
+            RightBorder rightBorder = new RightBorder()
+            {
+                Style = BorderStyleValues.Thin
+            };
+            rightBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
+            {
+                Indexed = (UInt32Value)64U
+            });
             TopBorder topBorder = new TopBorder() { Style = BorderStyleValues.Thin };
-            topBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color() { Indexed = (UInt32Value)64U });
-            BottomBorder bottomBorder = new BottomBorder() { Style = BorderStyleValues.Thin };
-            bottomBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color() { Indexed = (UInt32Value)64U });
+            topBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
+            {
+                Indexed = (UInt32Value)64U
+            });
+            BottomBorder bottomBorder = new BottomBorder()
+            {
+                Style = BorderStyleValues.Thin
+            };
+            bottomBorder.Append(new DocumentFormat.OpenXml.Office2010.Excel.Color()
+            {
+                Indexed = (UInt32Value)64U
+            });
             borderThin.Append(leftBorder);
             borderThin.Append(rightBorder);
             borderThin.Append(topBorder);
@@ -271,7 +216,10 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
             borderThin.Append(new DiagonalBorder());
             borders.Append(borderNoBorder);
             borders.Append(borderThin);
-            CellStyleFormats cellStyleFormats = new CellStyleFormats() { Count = (UInt32Value)1U };
+            CellStyleFormats cellStyleFormats = new CellStyleFormats()
+            {
+                Count = (UInt32Value)1U
+            };
             CellFormat cellFormatStyle = new CellFormat()
             {
                 NumberFormatId = (UInt32Value)0U,
@@ -326,22 +274,35 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                 BuiltinId = (UInt32Value)0U
             });
             DocumentFormat.OpenXml.Office2013.Excel.DifferentialFormats
-            differentialFormats = new DocumentFormat.OpenXml.Office2013.Excel.DifferentialFormats() { Count = (UInt32Value)0U };
-
+            differentialFormats = new DocumentFormat.OpenXml.Office2013.Excel.DifferentialFormats()
+            {
+                Count = (UInt32Value)0U
+            };
             TableStyles tableStyles = new TableStyles()
             {
                 Count = (UInt32Value)0U,
                 DefaultTableStyle = "TableStyleMedium2",
                 DefaultPivotStyle = "PivotStyleLight16"
             };
-            StylesheetExtensionList stylesheetExtensionList = new
-            StylesheetExtensionList();
-            StylesheetExtension stylesheetExtension1 = new StylesheetExtension() { Uri = "{EB79DEF2-80B8-43e5-95BD-54CBDDF9020C}" };
+            StylesheetExtensionList stylesheetExtensionList = new StylesheetExtensionList();
+            StylesheetExtension stylesheetExtension1 = new StylesheetExtension()
+            {
+                Uri = "{EB79DEF2-80B8-43e5-95BD-54CBDDF9020C}"
+            };
             stylesheetExtension1.AddNamespaceDeclaration("x14", "http://schemas.microsoft.com/office/spreadsheetml/2009/9/main");
-            stylesheetExtension1.Append(new SlicerStyles() { DefaultSlicerStyle = "SlicerStyleLight1" });
-            StylesheetExtension stylesheetExtension2 = new StylesheetExtension() { Uri = "{9260A510-F301-46a8-8635-F512D64BE5F5}" };
+            stylesheetExtension1.Append(new SlicerStyles()
+            {
+                DefaultSlicerStyle = "SlicerStyleLight1"
+            });
+            StylesheetExtension stylesheetExtension2 = new StylesheetExtension()
+            {
+                Uri = "{9260A510-F301-46a8-8635-F512D64BE5F5}"
+            };
             stylesheetExtension2.AddNamespaceDeclaration("x15", "http://schemas.microsoft.com/office/spreadsheetml/2010/11/main");
-            stylesheetExtension2.Append(new TimelineStyles() { DefaultTimelineStyle = "TimeSlicerStyleLight1" });
+            stylesheetExtension2.Append(new TimelineStyles()
+            {
+                DefaultTimelineStyle = "TimeSlicerStyleLight1"
+            });
             stylesheetExtensionList.Append(stylesheetExtension1);
             stylesheetExtensionList.Append(stylesheetExtension2);
             sp.Stylesheet.Append(fonts);
@@ -354,14 +315,11 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
             sp.Stylesheet.Append(tableStyles);
             sp.Stylesheet.Append(stylesheetExtensionList);
         }
-
         private static void InsertCellInWorksheet(ExcelCellParameters cellParameters)
         {
             SheetData sheetData = cellParameters.Worksheet.GetFirstChild<SheetData>();
 
-            // Ищем строку, либо добавляем ее
             Row row;
-
             if (sheetData.Elements<Row>().Where(r => r.RowIndex == cellParameters.RowIndex).Count() != 0)
             {
                 row = sheetData.Elements<Row>().Where(r => r.RowIndex == cellParameters.RowIndex).First();
@@ -372,19 +330,14 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                 sheetData.Append(row);
             }
 
-            // Ищем нужную ячейку
             Cell cell;
-
             if (row.Elements<Cell>().Where(c => c.CellReference.Value == cellParameters.CellReference).Count() > 0)
             {
                 cell = row.Elements<Cell>().Where(c => c.CellReference.Value == cellParameters.CellReference).First();
             }
             else
             {
-                // Все ячейки должны быть последовательно друг за другом расположены
-                // нужно определить, после какой вставлять
                 Cell refCell = null;
-
                 foreach (Cell rowCell in row.Elements<Cell>())
                 {
                     if (string.Compare(rowCell.CellReference.Value, cellParameters.CellReference, true) > 0)
@@ -393,24 +346,22 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                         break;
                     }
                 }
-
-                Cell newCell = new Cell() { CellReference = cellParameters.CellReference };
+                Cell newCell = new Cell()
+                {
+                    CellReference = cellParameters.CellReference
+                };
                 row.InsertBefore(newCell, refCell);
                 cell = newCell;
             }
-
-            // вставляем новый текст
             cellParameters.ShareStringPart.SharedStringTable.AppendChild(new SharedStringItem(new Text(cellParameters.Text)));
             cellParameters.ShareStringPart.SharedStringTable.Save();
             cell.CellValue = new CellValue((cellParameters.ShareStringPart.SharedStringTable.Elements<SharedStringItem>().Count() - 1).ToString());
             cell.DataType = new EnumValue<CellValues>(CellValues.SharedString);
             cell.StyleIndex = cellParameters.StyleIndex;
         }
-
         private static void MergeCells(ExcelMergeParameters mergeParameters)
         {
             MergeCells mergeCells;
-
             if (mergeParameters.Worksheet.Elements<MergeCells>().Count() > 0)
             {
                 mergeCells = mergeParameters.Worksheet.Elements<MergeCells>().First();
@@ -418,20 +369,19 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
             else
             {
                 mergeCells = new MergeCells();
-
                 if (mergeParameters.Worksheet.Elements<CustomSheetView>().Count() > 0)
                 {
-                    mergeParameters.Worksheet.InsertAfter(mergeCells,
-                    mergeParameters.Worksheet.Elements<CustomSheetView>().First());
+                    mergeParameters.Worksheet.InsertAfter(mergeCells, mergeParameters.Worksheet.Elements<CustomSheetView>().First());
                 }
                 else
                 {
-                    mergeParameters.Worksheet.InsertAfter(mergeCells,
-                    mergeParameters.Worksheet.Elements<SheetData>().First());
+                    mergeParameters.Worksheet.InsertAfter(mergeCells, mergeParameters.Worksheet.Elements<SheetData>().First());
                 }
             }
-
-            MergeCell mergeCell = new MergeCell() { Reference = new StringValue(mergeParameters.Merge) };
+            MergeCell mergeCell = new MergeCell()
+            {
+                Reference = new StringValue(mergeParameters.Merge)
+            };
             mergeCells.Append(mergeCell);
         }
     }

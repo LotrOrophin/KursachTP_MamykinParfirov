@@ -11,5 +11,8 @@ namespace AbstractSchoolBusinessLogic.Interfaces
         List<RequestViewModel> Read(RequestBindingModel model);
         void CreateOrUpdate(RequestBindingModel model);
         void Delete(RequestBindingModel model);
+        void Reserve(ReserveSchoolSuppliesBindingModel model);
+        void SaveJson(string folderName);
+        void SaveXml(string folderName);
     }
 }
