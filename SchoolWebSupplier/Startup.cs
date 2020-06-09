@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AbstractSchoolBusinessLogic.BusinessLogics;
 using AbstractSchoolBusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,8 +10,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using AbstractSchoolBusinessLogic.BusinessLogics;
 using SchoolDatabaseImplement.Implements;
 
 namespace SchoolWebSupplier
@@ -30,7 +29,7 @@ namespace SchoolWebSupplier
             services.AddControllersWithViews();
             services.AddTransient<ISupplierLogic, SupplierLogic>();
             services.AddTransient<IRequestLogic, RequestLogic>();
-            services.AddTransient<ICircleLogic, CircleLogic>();
+            services.AddTransient<ISchoolSupplieLogic, SchoolSupplieLogic>();
             services.AddTransient<IWareHouseLogic, WareHouseLogic>();
             services.AddTransient<SupplierBusinessLogic>();
             services.AddTransient<SupplierReportLogic>();

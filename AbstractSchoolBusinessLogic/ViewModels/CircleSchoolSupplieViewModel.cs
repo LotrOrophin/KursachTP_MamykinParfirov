@@ -3,7 +3,7 @@
 
 namespace AbstractSchoolBusinessLogic.ViewModels
 {
-    public class SchoolSupplieCircleViewModel
+    public class CircleSchoolSupplieViewModel
     {
         public int Id { get; set; }
         public int CircleId { get; set; }

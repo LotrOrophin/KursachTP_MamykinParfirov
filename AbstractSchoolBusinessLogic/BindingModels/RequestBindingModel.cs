@@ -12,5 +12,8 @@ namespace AbstractSchoolBusinessLogic.BindingModels
         public decimal Sum { get; set; }
         public RequestStatus Status { get; set; }
         public Dictionary<int, (string, int, bool)> SchoolSupllies { get; set; }
+        public DateTime? DateFrom { get; set; }
+        public DateTime? DateTo { get; set; }
+        public DateTime CompletionDate { get; set; }
     }
 }

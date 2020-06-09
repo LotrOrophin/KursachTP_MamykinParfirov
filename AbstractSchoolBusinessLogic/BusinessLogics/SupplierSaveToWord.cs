@@ -36,16 +36,6 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                         JustificationValues = JustificationValues.Left
                     }
                 }));
-                docBody.AppendChild(CreateParagraph(new WordParagraph
-                {
-                    Texts = new List<string> { "Дата выполнения:" + " " + info.DateComplete },
-                    TextProperties = new WordParagraphProperties
-                    {
-                        Bold = false,
-                        Size = "18",
-                        JustificationValues = JustificationValues.Left
-                    }
-                }));
                 Table table = new Table();
                 TableProperties tblProp = new TableProperties(
                     new TableBorders(

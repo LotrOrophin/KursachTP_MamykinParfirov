@@ -1,6 +1,8 @@
 ﻿using AbstractSchoolBusinessLogic.BindingModels;
+using AbstractSchoolBusinessLogic.Enums;
 using AbstractSchoolBusinessLogic.HelperModels;
 using AbstractSchoolBusinessLogic.Interfaces;
+using AbstractSchoolBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -12,12 +14,14 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
     public class SupplierReportLogic
     {
         private readonly IRequestLogic requestLogic;
-        public SupplierReportLogic(IRequestLogic requestLogic)
+        private readonly ISchoolSupplieLogic schoolSupplieLogic;
+        public SupplierReportLogic(IRequestLogic requestLogic, ISchoolSupplieLogic schoolSupplieLogic)
         {
             this.requestLogic = requestLogic;
+            this.schoolSupplieLogic = schoolSupplieLogic;
         }
 
-        public Dictionary<int, (string, int, bool)> GetRequestFoods(int requestId)
+        public Dictionary<int, (string, int, bool)> GetRequestSchoolSupplies(int requestId)
         {
             var requestFoods = requestLogic.Read(new RequestBindingModel
             {
@@ -25,29 +29,77 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             })?[0].SchoolSupplies;
             return requestFoods;
         }
-
-        public void SaveNeedFoodToWordFile(WordInfo wordInfo, string email)
+        public List<ReportSchoolSupplieViewModel> GetSchoolSupplies(DateTime? from, DateTime? to)
+        {
+            var schoolSupplies = schoolSupplieLogic.Read(null);
+            var requests = requestLogic.Read(null);
+            var list = new List<ReportSchoolSupplieViewModel>();
+            foreach (var request in requests)
+            {
+                foreach (var requestFood in request.SchoolSupplies)
+                {
+                    foreach (var schoolSupplie in schoolSupplies)
+                    {
+                        if (schoolSupplie.SchoolSupplieName == requestFood.Value.Item1)
+                        {
+                            var record = new ReportSchoolSupplieViewModel
+                            {
+                                SupplierFIO = request.SupplierFIO,
+                                SchoolSupplieName = requestFood.Value.Item1,
+                                Count = requestFood.Value.Item2,
+                                Status = StatusSchoolSupplie(request.Status),
+                                CompletionDate = request.CompletionDate,
+                                PricePerHour = schoolSupplie.Price
+                            };
+                            list.Add(record);
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+        public string StatusSchoolSupplie(RequestStatus requestStatus)
+        {
+            if (requestStatus == RequestStatus.Создана)
+                return "Ждут отправки";
+            if (requestStatus == RequestStatus.Выполняется)
+                return "В пути";
+            if (requestStatus == RequestStatus.Готова)
+                return "Поставлено";
+            if (requestStatus == RequestStatus.Обработана)
+                return "Использовано";
+            return "";
+        }
+        public void SaveNeedSchoolSupplieToWordFile(WordInfo wordInfo, string email)
         {
             string title = "Список требуемых продуктов по заявке №" + wordInfo.RequestId;
             wordInfo.Title = title;
             wordInfo.FileName = wordInfo.FileName;
-            wordInfo.DateComplete = DateTime.Now;
-            wordInfo.RequestSchoolSupplies = GetRequestFoods(wordInfo.RequestId);
+            wordInfo.RequestSchoolSupplies = GetRequestSchoolSupplies(wordInfo.RequestId);
             SupplierSaveToWord.CreateDoc(wordInfo);
             SendMail(email, wordInfo.FileName, title);
         }
 
-        public void SaveNeedFoodToExcelFile(ExcelInfo excelInfo, string email)
+        public void SaveNeedSchoolSupplieToExcelFile(ExcelInfo excelInfo, string email)
         {
             string title = "Список требуемых продуктов по заявке №" + excelInfo.RequestId;
             excelInfo.Title = title;
             excelInfo.FileName = excelInfo.FileName;
-            excelInfo.DateComplete = DateTime.Now;
-            excelInfo.SchoolSupplies = GetRequestFoods(excelInfo.RequestId);
+            excelInfo.RequestSchoolSupplies = GetRequestSchoolSupplies(excelInfo.RequestId);
             SupplierSaveToExcel.CreateDoc(excelInfo);
             SendMail(email, excelInfo.FileName, title);
         }
-
+        public void SaveSchoolSuppliesToPdfFile(string fileName, RequestBindingModel model, string email)
+        {
+            string title = "Список канцелярии в период с " + model.DateFrom.ToString() + " по " + model.DateTo.ToString();
+            SupplierSaveToPdf.CreateDoc(new PdfInfo
+            {
+                FileName = fileName,
+                Title = title,
+                SchoolSupplies = GetSchoolSupplies(model.DateFrom, model.DateTo)
+            });
+            SendMail(email, fileName, title);
+        }
         public void SendMail(string email, string fileName, string subject)
         {
             MailAddress from = new MailAddress("denis_73007@mail.ru", "Школа");

@@ -12,7 +12,7 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        [DisplayName("Название блюда")]
+        [DisplayName("Название кружка")]
         public string CircleName { get; set; }
         [DataMember]
         [DisplayName("Цена")]

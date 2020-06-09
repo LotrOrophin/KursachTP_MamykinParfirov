@@ -1,5 +1,6 @@
 ﻿using AbstractSchoolBusinessLogic.BindingModels;
 using AbstractSchoolBusinessLogic.BusinessLogic;
+using AbstractSchoolBusinessLogic.Enums;
 using AbstractSchoolBusinessLogic.HelperModels;
 using AbstractSchoolBusinessLogic.Interfaces;
 using AbstractSchoolBusinessLogic.ViewModels;
@@ -15,13 +16,15 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
     {
         private readonly ICircleLogic circleLogic;
         private readonly IOrderLogic orderLogic;
-        private readonly IWareHouseLogic warehouseLogic;
+        private readonly ISchoolSupplieLogic schoolSupplieLogic;
+        private readonly IRequestLogic requestLogic;
 
-        public ReportLogic(ICircleLogic circleLogic, IOrderLogic orderLogic, IWareHouseLogic warehouseLogic)
+        public ReportLogic(ICircleLogic circleLogic, IOrderLogic orderLogic, IRequestLogic requestLogic, ISchoolSupplieLogic schoolSupplieLogic)
         {
             this.circleLogic = circleLogic;
             this.orderLogic = orderLogic;
-            this.warehouseLogic = warehouseLogic;
+            this.requestLogic = requestLogic;
+            this.schoolSupplieLogic = schoolSupplieLogic;
         }
 
         public List<ReportCircleSchoolSupplieViewModel> GetCircleSchoolSupplies()
@@ -43,56 +46,45 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             }
             return list;
         }
-
-        public List<ReportWareHouseSchoolSupplieViewModel> GetWarehouseSchoolSupplie()
+        public List<ReportSchoolSupplieViewModel> GetSchoolSupplies(DateTime from, DateTime to)
         {
-            var warehouses = warehouseLogic.Read(null);
-            var list = new List<ReportWareHouseSchoolSupplieViewModel>();
-            foreach (var warehouse in warehouses)
+            var schoolSupplies = schoolSupplieLogic.Read(null);
+            var requests = requestLogic.Read(null);
+            var list = new List<ReportSchoolSupplieViewModel>();
+            foreach (var request in requests)
             {
-                foreach (var ff in warehouse.SchoolSupplies)
+                foreach (var requestSchoolSupplie in request.SchoolSupplies)
                 {
-                    var record = new ReportWareHouseSchoolSupplieViewModel
+                    foreach (var schoolSupplie in schoolSupplies)
                     {
-                        WarehouseName = warehouse.WareHouseName,
-                        SchoolSupplieName = ff.Value.Item1,
-                        Count = ff.Value.Item2
-                    };
-                    list.Add(record);
+                        if (schoolSupplie.SchoolSupplieName == requestSchoolSupplie.Value.Item1)
+                        {
+                            var record = new ReportSchoolSupplieViewModel
+                            {
+                                SchoolSupplieName = requestSchoolSupplie.Value.Item1,
+                                Count = requestSchoolSupplie.Value.Item2,
+                                Status = StatusSchoolSupplie(request.Status),
+                                CompletionDate = DateTime.Now,
+                                PricePerHour = schoolSupplie.Price
+                            };
+                            list.Add(record);
+                        }
+                    }
                 }
             }
             return list;
         }
-
-        public List<IGrouping<DateTime, OrderViewModel>> GetOrders(ReportBindingModel model)
+        public string StatusSchoolSupplie(RequestStatus requestStatus)
         {
-            var list = orderLogic
-            .Read(new OrderBindingModel
-            {
-                DateFrom = model.DateFrom,
-                DateTo = model.DateTo
-            })
-            .GroupBy(rec => rec.CreationDate.Date)
-            .OrderBy(recG => recG.Key)
-            .ToList();
-            return list;
-        }
-        public List<ReportOrdersViewModel> GetOrder(ReportBindingModel model)
-        {
-            return orderLogic.Read(new OrderBindingModel
-            {
-                DateFrom = model.DateFrom,
-                DateTo = model.DateTo
-            })
-            .Select(x => new ReportOrdersViewModel
-            {
-                CreationDate = x.CreationDate,
-                CircleName = x.CircleName,
-                Count = x.Count,
-                Amount = x.Sum,
-                OrderStatus = x.OrderStatus
-            })
-            .ToList();
+            if (requestStatus == RequestStatus.Создана)
+                return "Ждут отправки";
+            if (requestStatus == RequestStatus.Выполняется)
+                return "В пути";
+            if (requestStatus == RequestStatus.Готова)
+                return "Поставлено";
+            if (requestStatus == RequestStatus.Обработана)
+                return "Использовано";
+            return "";
         }
         public List<ReportOrdersViewModel> GetReportOrder(ReportBindingModel model)
         {
@@ -112,6 +104,18 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             }
             return list;
         }
+
+        public void SaveOrdersToExcelFile(ReportBindingModel model)
+        {
+            SaveToExcel.CreateDoc(new ExcelInfo
+            {
+                FileName = model.FileName,
+                Title = "Список выполненных заказов",
+                Orders = GetReportOrder(model),
+                CircleSchoolSupplies = GetCircleSchoolSupplies()
+            });
+            SendMail("kristina.zolotareva.14@gmail.com", model.FileName, "Список блюд с продуктами");
+        }
         public void SaveOrdersToWordFile(ReportBindingModel model)
         {
             try
@@ -128,39 +132,18 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 throw;
             }
+            SendMail("kristina.zolotareva.14@gmail.com", model.FileName, "Список блюд с продуктами");
         }
-        public void SaveCirclesToWordFile(ReportBindingModel model)
-        {
-            SaveToWord.CreateDoc(new WordInfo
-            {
-                FileName = model.FileName,
-                Title = "Список кружков",
-                Circles = circleLogic.Read(null),
-                Warehouses = null
-            });
-        }
-
-        public void SaveOrdersToExcelFile(ReportBindingModel model)
-        {
-            SaveToExcel.CreateDoc(new ExcelInfo
-            {
-                FileName = model.FileName,
-                Title = "Список выполненных заказов",
-                Orders = GetReportOrder(model),
-                CircleSchoolSupplies = GetCircleSchoolSupplies()
-            });
-        }
-
-        public void SaveCirclesSchoolSuppliesToPdfFile(ReportBindingModel model)
+        public void SaveSchoolSuppliesToPdfFile(ReportBindingModel model)
         {
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "Список кружков по канцелярии",
-                SchoolSuppliesCircles = GetCircleSchoolSupplies(),
-                WarehouseSchoolSupplies = null
+                Title = "Движение канцелярии",
+                SchoolSupplies = GetSchoolSupplies(model.DateFrom, model.DateTo)
             });
         }
+
         public void SendMail(string email, string fileName, string subject)
         {
             MailAddress from = new MailAddress("denis_73007@mail.ru", "Школа");
@@ -173,6 +156,20 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             smtp.EnableSsl = true;
             smtp.Send(m);
         }
-
+        public void SendMailReport(string email, string fileName, string subject, string type)
+        {
+            MailAddress from = new MailAddress("labwork15kafis@gmail.com", "Школа");
+            MailAddress to = new MailAddress(email);
+            MailMessage m = new MailMessage(from, to);
+            m.Subject = subject;
+            m.Attachments.Add(new Attachment(fileName + "\\order." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\request." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\circle." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\schoolSupplie." + type));
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential("labwork15kafis@gmail.com", "passlab15");
+            smtp.EnableSsl = true;
+            smtp.Send(m);
+        }
     }
 }

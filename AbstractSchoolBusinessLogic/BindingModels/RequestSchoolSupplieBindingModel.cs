@@ -9,5 +9,6 @@ namespace AbstractSchoolBusinessLogic.BindingModels
         public int WareHouseId { get; set; }
         public int SchoolSupplieId { get; set; }
         public int Count { get; set; }
+        public int PricePerHour { get; set; }
     }
 }

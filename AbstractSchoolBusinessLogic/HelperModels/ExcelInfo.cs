@@ -13,8 +13,7 @@ namespace AbstractSchoolBusinessLogic.HelperModels
         public List<WareHouseViewModel> Warehouses { get; set; }
         public int RequestId { get; set; }
         public string SupplierFIO { get; set; }
-        public DateTime DateComplete { get; set; }
-        public Dictionary<int, (string, int, bool)> SchoolSupplies { get; set; }
+        public Dictionary<int, (string, int, bool)> RequestSchoolSupplies { get; set; }
         public List<ReportCircleSchoolSupplieViewModel> CircleSchoolSupplies { get; set; }
     }
 }
