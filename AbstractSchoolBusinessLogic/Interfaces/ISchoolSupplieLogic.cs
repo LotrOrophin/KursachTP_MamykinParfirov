@@ -11,7 +11,7 @@ namespace AbstractSchoolBusinessLogic.Interfaces
         List<SchoolSupplieViewModel> Read(SchoolSupplieBindingModel model);
         void CreateOrUpdate(SchoolSupplieBindingModel model);
         void Delete(SchoolSupplieBindingModel model);
-        void SaveJson(string folderName);
-        void SaveXml(string folderName);
+        void SaveJsonSchoolSupplie(string folderName);
+        void SaveXmlSchoolSupplie(string folderName);
     }
 }

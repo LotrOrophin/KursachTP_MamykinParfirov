@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace SchoolDatabaseImplement.Implements
 {
@@ -178,6 +181,57 @@ namespace SchoolDatabaseImplement.Implements
                 else
                 {
                     throw new Exception("На складе нет таких товаров");
+                }
+            }
+        }
+        public void SaveJsonWareHouse(string folderName)
+        {
+            string fileName = $"{folderName}\\WareHouse.json";
+            using (var context = new SchoolDatabase())
+            {
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<WareHouse>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, context.WareHouses);
+                }
+            }
+        }
+
+        public void SaveJsonWareHouseSchoolSupplie(string folderName)
+        {
+            string fileName = $"{folderName}\\WareHouseSchoolSupplie.json";
+            using (var context = new SchoolDatabase())
+            {
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<WareHouseSchoolSupplie>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, context.WareHouseSchoolSupplies);
+                }
+            }
+        }
+
+        public void SaveXmlWareHouse(string folderName)
+        {
+            string fileNameDop = $"{folderName}\\WareHouse.xml";
+            using (var context = new SchoolDatabase())
+            {
+                XmlSerializer fomatterXml = new XmlSerializer(typeof(DbSet<WareHouse>));
+                using (FileStream fs = new FileStream(fileNameDop, FileMode.Create))
+                {
+                    fomatterXml.Serialize(fs, context.WareHouses);
+                }
+            }
+        }
+
+        public void SaveXmlWareHouseSchoolSupplie(string folderName)
+        {
+            string fileNameDop = $"{folderName}\\WareHouseSchoolSupplie.xml";
+            using (var context = new SchoolDatabase())
+            {
+                XmlSerializer fomatterXml = new XmlSerializer(typeof(DbSet<WareHouseSchoolSupplie>));
+                using (FileStream fs = new FileStream(fileNameDop, FileMode.Create))
+                {
+                    fomatterXml.Serialize(fs, context.WareHouseSchoolSupplies);
                 }
             }
         }

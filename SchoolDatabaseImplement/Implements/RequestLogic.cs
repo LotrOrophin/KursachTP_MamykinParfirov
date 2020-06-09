@@ -150,12 +150,12 @@ namespace SchoolDatabaseImplement.Implements
             }
         }
 
-        public void SaveJson(string folderName)
+        public void SaveJsonRequest(string folderName)
         {
-            string fileName = $"{folderName}\\request.json";
+            string fileName = $"{folderName}\\Request.json";
             using (var context = new SchoolDatabase())
             {
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Request>));
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<Request>));
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))
                 {
                     jsonFormatter.WriteObject(fs, context.Requests);
@@ -163,15 +163,39 @@ namespace SchoolDatabaseImplement.Implements
             }
         }
 
-        public void SaveXml(string folderName)
+        public void SaveJsonRequestSchoolSupplie(string folderName)
         {
-            string fileNameDop = $"{folderName}\\request.xml";
+            string fileName = $"{folderName}\\RequestSchoolSupplie.json";
+            using (var context = new SchoolDatabase())
+            {
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<RequestSchoolSupplie>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, context.RequestsSchoolSupplies);
+                }
+            }
+        }
+        public void SaveXmlRequest(string folderName)
+        {
+            string fileNameDop = $"{folderName}\\Request.xml";
             using (var context = new SchoolDatabase())
             {
                 XmlSerializer fomatterXml = new XmlSerializer(typeof(DbSet<Request>));
                 using (FileStream fs = new FileStream(fileNameDop, FileMode.Create))
                 {
                     fomatterXml.Serialize(fs, context.Requests);
+                }
+            }
+        }
+        public void SaveXmlRequestSchoolSupplie(string folderName)
+        {
+            string fileNameDop = $"{folderName}\\RequestFood.xml";
+            using (var context = new SchoolDatabase())
+            {
+                XmlSerializer fomatterXml = new XmlSerializer(typeof(DbSet<RequestSchoolSupplie>));
+                using (FileStream fs = new FileStream(fileNameDop, FileMode.Create))
+                {
+                    fomatterXml.Serialize(fs, context.RequestsSchoolSupplies);
                 }
             }
         }

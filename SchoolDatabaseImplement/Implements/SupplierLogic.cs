@@ -1,11 +1,15 @@
 ﻿using AbstractSchoolBusinessLogic.BindingModels;
 using AbstractSchoolBusinessLogic.Interfaces;
 using AbstractSchoolBusinessLogic.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using SchoolDatabaseImplement.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace SchoolDatabaseImplement.Implements
 {
@@ -72,6 +76,31 @@ namespace SchoolDatabaseImplement.Implements
                     Password = rec.Password
                 })
                 .ToList();
+            }
+        }
+        public void SaveJsonSupplier(string folderName)
+        {
+            string fileName = $"{folderName}\\Supplier.json";
+            using (var context = new SchoolDatabase())
+            {
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<Supplier>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, context.Suppliers);
+                }
+            }
+        }
+
+        public void SaveXmlSupplier(string folderName)
+        {
+            string fileNameDop = $"{folderName}\\Supplier.xml";
+            using (var context = new SchoolDatabase())
+            {
+                XmlSerializer fomatterXml = new XmlSerializer(typeof(DbSet<Supplier>));
+                using (FileStream fs = new FileStream(fileNameDop, FileMode.Create))
+                {
+                    fomatterXml.Serialize(fs, context.Suppliers);
+                }
             }
         }
     }

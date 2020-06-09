@@ -60,5 +60,23 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             smtp.EnableSsl = true;
             smtp.Send(m);
         }
+
+        public void SendMailBackup(string email, string fileName, string subject, string type)
+        {
+            MailAddress from = new MailAddress("lyaysanlabs@gmail.com", "Школа");
+            MailAddress to = new MailAddress(email);
+            MailMessage m = new MailMessage(from, to);
+            m.Subject = subject;
+            m.Attachments.Add(new Attachment(fileName + "\\Request." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\RequestSchoolSupplie." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\WareHouse." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\WareHouseSchoolSupplie." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\Supplier." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\SchoolSupplie." + type));
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential("lyaysanlabs@gmail.com", "987-654lL");
+            smtp.EnableSsl = true;
+            smtp.Send(m);
+        }
     }
 }

@@ -14,5 +14,9 @@ namespace AbstractSchoolBusinessLogic.Interfaces
         void AddSchoolSupplie(RequestSchoolSupplieBindingModel model);
         void ReserveSchoolSupplies(RequestSchoolSupplieBindingModel model);
         List<WareHouseAvailableViewModel> GetWareHouseAvailable(RequestSchoolSupplieBindingModel model);
+        void SaveJsonWareHouse(string folderName);
+        void SaveJsonWareHouseSchoolSupplie(string folderName);
+        void SaveXmlWareHouse(string filderName);
+        void SaveXmlWareHouseSchoolSupplie(string filderName);
     }
 }

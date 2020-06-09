@@ -76,12 +76,12 @@ namespace SchoolDatabaseImplement.Implements
             }
         }
 
-        public void SaveJson(string folderName)
+        public void SaveJsonSchoolSupplie(string folderName)
         {
-            string fileName = $"{folderName}\\schoolSupplie.json";
+            string fileName = $"{folderName}\\SchoolSupplie.json";
             using (var context = new SchoolDatabase())
             {
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<SchoolSupplie>));
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<SchoolSupplie>));
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))
                 {
                     jsonFormatter.WriteObject(fs, context.SchoolSupplies);
@@ -89,9 +89,9 @@ namespace SchoolDatabaseImplement.Implements
             }
         }
 
-        public void SaveXml(string folderName)
+        public void SaveXmlSchoolSupplie(string folderName)
         {
-            string fileName = $"{folderName}\\schoolSupplie.xml";
+            string fileName = $"{folderName}\\SchoolSupplie.xml";
             using (var context = new SchoolDatabase())
             {
                 XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<SchoolSupplie>));

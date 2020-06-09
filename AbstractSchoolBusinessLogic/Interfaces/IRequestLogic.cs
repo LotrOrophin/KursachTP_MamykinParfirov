@@ -12,7 +12,9 @@ namespace AbstractSchoolBusinessLogic.Interfaces
         void CreateOrUpdate(RequestBindingModel model);
         void Delete(RequestBindingModel model);
         void Reserve(ReserveSchoolSuppliesBindingModel model);
-        void SaveJson(string folderName);
-        void SaveXml(string folderName);
+        void SaveJsonRequest(string folderName);
+        void SaveJsonRequestSchoolSupplie(string folderName);
+        void SaveXmlRequest(string folderName);
+        void SaveXmlRequestSchoolSupplie(string folderName);
     }
 }
