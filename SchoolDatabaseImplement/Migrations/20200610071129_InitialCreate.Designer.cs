@@ -10,14 +10,14 @@ using SchoolDatabaseImplement;
 namespace SchoolDatabaseImplement.Migrations
 {
     [DbContext(typeof(SchoolDatabase))]
-    [Migration("20200608163435_InitialCreate")]
+    [Migration("20200610071129_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
