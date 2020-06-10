@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AbstractSchoolBusinessLogic.BindingModels;
 using AbstractSchoolBusinessLogic.BusinessLogics;
+using AbstractSchoolBusinessLogic.HelperModels;
 using AbstractSchoolBusinessLogic.Interfaces;
+using AbstractSchoolBusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SchoolWebSupplier.Models;
 
 namespace SchoolWebSupplier.Controllers
 {
@@ -50,12 +53,12 @@ namespace SchoolWebSupplier.Controllers
             string fileName = "D:\\data\\Reportpdf.pdf";
             if (model.SendMail)
             {
-                reportLogic.SaveFoodsToPdfFile(fileName, new RequestBindingModel
+                reportLogic.SaveSchoolSuppliesToPdfFile(fileName, new RequestBindingModel
                 {
                     SupplierId = Program.Supplier.Id,
                     DateFrom = model.From,
                     DateTo = model.To
-                }, Program.Supplier.Login);
+                }, Program.Supplier.Email);
             }
             return View();
         }
@@ -74,20 +77,20 @@ namespace SchoolWebSupplier.Controllers
             var foods = requestLogic.Read(new RequestBindingModel
             {
                 Id = ID
-            })?[0].Foods;
+            })?[0].SchoolSupplies;
             return View(foods);
         }
 
-        public IActionResult Reserve(int requestId, int foodId)
+        public IActionResult Reserve(int requestId, int schoolSupplieId)
         {
             if (Program.Supplier == null)
             {
                 return new UnauthorizedResult();
             }
-            supplierLogic.ReserveFoods(new ReserveFoodsBindingModel
+            supplierLogic.ReserveFoods(new ReserveSchoolSuppliesBindingModel
             {
                 RequestId = requestId,
-                FoodId = foodId
+                SchoolSupplieId = schoolSupplieId
             });
             return RedirectToAction("RequestView", new { id = requestId });
         }
@@ -128,9 +131,9 @@ namespace SchoolWebSupplier.Controllers
             ViewBag.Count = count;
             ViewBag.FoodId = id;
             ViewBag.RequestId = requestId;
-            var fridges = fridgeLogic.GetFridgeAvailable(new RequestFoodBindingModel
+            var fridges = wareHouseLogic.GetWareHouseAvailable(new RequestSchoolSupplieBindingModel
             {
-                FoodId = id,
+                SchoolSupplieId = id,
                 Count = count
             });
             return View(fridges);
@@ -139,23 +142,23 @@ namespace SchoolWebSupplier.Controllers
         public IActionResult SendWordReport(int id)
         {
             string fileName = "D:\\data\\" + id + ".docx";
-            reportLogic.SaveNeedFoodToWordFile(new WordInfo
+            reportLogic.SaveNeedSchoolSupplieToWordFile(new WordInfo
             {
                 FileName = fileName,
                 RequestId = id,
                 SupplierFIO = Program.Supplier.SupplierFIO
-            }, Program.Supplier.Login);
+            }, Program.Supplier.Email);
             return RedirectToAction("Request");
         }
         public IActionResult SendExcelReport(int id)
         {
             string fileName = "D:\\data\\" + id + ".xlsx";
-            reportLogic.SaveNeedFoodToExcelFile(new ExcelInfo
+            reportLogic.SaveNeedSchoolSupplieToExcelFile(new ExcelInfo
             {
                 FileName = fileName,
                 RequestId = id,
                 SupplierFIO = Program.Supplier.SupplierFIO
-            }, Program.Supplier.Login);
+            }, Program.Supplier.Email);
             return RedirectToAction("Request");
         }
     }
