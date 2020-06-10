@@ -147,6 +147,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormCircle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCircle.Designer.cs">
+      <DependentUpon>FormCircle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCircles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCircles.Designer.cs">
+      <DependentUpon>FormCircles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCirclesSchoolSupplie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCirclesSchoolSupplie.Designer.cs">
+      <DependentUpon>FormCirclesSchoolSupplie.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCreateOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,8 +183,44 @@
     <Compile Include="FormCreateSchoolSupplie.Designer.cs">
       <DependentUpon>FormCreateSchoolSupplie.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSchoolSupplie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSchoolSupplie.Designer.cs">
+      <DependentUpon>FormSchoolSupplie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSchoolSupplies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSchoolSupplies.Designer.cs">
+      <DependentUpon>FormSchoolSupplies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCircle.resx">
+      <DependentUpon>FormCircle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCircles.resx">
+      <DependentUpon>FormCircles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCirclesSchoolSupplie.resx">
+      <DependentUpon>FormCirclesSchoolSupplie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSchoolSupplie.resx">
+      <DependentUpon>FormSchoolSupplie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSchoolSupplies.resx">
+      <DependentUpon>FormSchoolSupplies.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
