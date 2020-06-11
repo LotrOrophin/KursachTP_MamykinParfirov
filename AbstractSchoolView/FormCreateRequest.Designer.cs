@@ -28,26 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.SchoolSupplieGridView = new System.Windows.Forms.DataGridView();
             this.comboBoxSupplier = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.SchoolSupplieGridView = new System.Windows.Forms.DataGridView();
+            this.schoolSupplieId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schoolSupplieName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schoolSupplieCountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.SchoolSupplieGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRefresh
             // 
             this.buttonRefresh.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonRefresh.Location = new System.Drawing.Point(528, 235);
-            this.buttonRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRefresh.Location = new System.Drawing.Point(453, 204);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(196, 38);
+            this.buttonRefresh.Size = new System.Drawing.Size(168, 33);
             this.buttonRefresh.TabIndex = 14;
             this.buttonRefresh.Text = "Обновить";
             this.buttonRefresh.UseVisualStyleBackColor = false;
@@ -56,10 +57,9 @@
             // buttonDelete
             // 
             this.buttonDelete.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonDelete.Location = new System.Drawing.Point(529, 189);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDelete.Location = new System.Drawing.Point(453, 164);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(196, 38);
+            this.buttonDelete.Size = new System.Drawing.Size(168, 33);
             this.buttonDelete.TabIndex = 13;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = false;
@@ -68,10 +68,9 @@
             // buttonUpdate
             // 
             this.buttonUpdate.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonUpdate.Location = new System.Drawing.Point(529, 143);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonUpdate.Location = new System.Drawing.Point(453, 124);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(197, 38);
+            this.buttonUpdate.Size = new System.Drawing.Size(169, 33);
             this.buttonUpdate.TabIndex = 12;
             this.buttonUpdate.Text = "Изменить";
             this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -80,66 +79,37 @@
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonAdd.Location = new System.Drawing.Point(528, 64);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAdd.Location = new System.Drawing.Point(453, 55);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(198, 71);
+            this.buttonAdd.Size = new System.Drawing.Size(170, 62);
             this.buttonAdd.TabIndex = 11;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.AddFoodButton_Click);
             // 
-            // foodsGridView
-            // 
-            this.SchoolSupplieGridView.AllowUserToAddRows = false;
-            this.SchoolSupplieGridView.AllowUserToDeleteRows = false;
-            this.SchoolSupplieGridView.AllowUserToResizeRows = false;
-            this.SchoolSupplieGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.SchoolSupplieGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
-            this.SchoolSupplieGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SchoolSupplieGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.SchoolSupplieGridView.GridColor = System.Drawing.SystemColors.Control;
-            this.SchoolSupplieGridView.Location = new System.Drawing.Point(13, 64);
-            this.SchoolSupplieGridView.MultiSelect = false;
-            this.SchoolSupplieGridView.Name = "foodsGridView";
-            this.SchoolSupplieGridView.ReadOnly = true;
-            this.SchoolSupplieGridView.RowHeadersWidth = 51;
-            this.SchoolSupplieGridView.Size = new System.Drawing.Size(509, 224);
-            this.SchoolSupplieGridView.TabIndex = 10;
-            // 
             // comboBoxSupplier
             // 
             this.comboBoxSupplier.FormattingEnabled = true;
-            this.comboBoxSupplier.Location = new System.Drawing.Point(88, 15);
-            this.comboBoxSupplier.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSupplier.Location = new System.Drawing.Point(75, 13);
             this.comboBoxSupplier.Name = "comboBoxSupplier";
-            this.comboBoxSupplier.Size = new System.Drawing.Size(434, 23);
+            this.comboBoxSupplier.Size = new System.Drawing.Size(373, 21);
             this.comboBoxSupplier.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 15);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "Поставщик:";
             // 
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonCancel.Location = new System.Drawing.Point(336, 295);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCancel.Location = new System.Drawing.Point(349, 256);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(282, 33);
+            this.buttonCancel.Size = new System.Drawing.Size(272, 29);
             this.buttonCancel.TabIndex = 18;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -148,21 +118,54 @@
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonSave.Location = new System.Drawing.Point(13, 294);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSave.Location = new System.Drawing.Point(11, 255);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(297, 35);
+            this.buttonSave.Size = new System.Drawing.Size(309, 30);
             this.buttonSave.TabIndex = 17;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // SchoolSupplieGridView
+            // 
+            this.SchoolSupplieGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SchoolSupplieGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.schoolSupplieId,
+            this.schoolSupplieName,
+            this.schoolSupplieCountColumn});
+            this.SchoolSupplieGridView.Location = new System.Drawing.Point(12, 51);
+            this.SchoolSupplieGridView.Name = "SchoolSupplieGridView";
+            this.SchoolSupplieGridView.Size = new System.Drawing.Size(425, 185);
+            this.SchoolSupplieGridView.TabIndex = 19;
+            // 
+            // schoolSupplieId
+            // 
+            this.schoolSupplieId.HeaderText = "";
+            this.schoolSupplieId.Name = "schoolSupplieId";
+            this.schoolSupplieId.ReadOnly = true;
+            this.schoolSupplieId.Visible = false;
+            // 
+            // schoolSupplieName
+            // 
+            this.schoolSupplieName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.schoolSupplieName.HeaderText = "Наименование канц. товара";
+            this.schoolSupplieName.Name = "schoolSupplieName";
+            this.schoolSupplieName.ReadOnly = true;
+            // 
+            // schoolSupplieCountColumn
+            // 
+            this.schoolSupplieCountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.schoolSupplieCountColumn.HeaderText = "Кол-во";
+            this.schoolSupplieCountColumn.Name = "schoolSupplieCountColumn";
+            this.schoolSupplieCountColumn.ReadOnly = true;
+            // 
             // FormCreateRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(743, 340);
+            this.ClientSize = new System.Drawing.Size(637, 295);
+            this.Controls.Add(this.SchoolSupplieGridView);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.comboBoxSupplier);
@@ -171,8 +174,6 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.SchoolSupplieGridView);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormCreateRequest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Заказ";
@@ -189,14 +190,13 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.DataGridView SchoolSupplieGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn foodId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn foodNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countColumn;
         private System.Windows.Forms.ComboBox comboBoxSupplier;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SchoolSupplieCountColumn;
+        private System.Windows.Forms.DataGridView SchoolSupplieGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schoolSupplieId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schoolSupplieName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schoolSupplieCountColumn;
     }
 }

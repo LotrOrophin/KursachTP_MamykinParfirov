@@ -70,10 +70,10 @@ namespace AbstractSchoolView
             }
         }
 
-        private void FormReportDishFoods_Load(object sender, EventArgs e)
-        {
+        /* private void FormReportDishFoods_Load(object sender, EventArgs e)
+         {
 
-            this.reportViewer.RefreshReport();
-        }
+             this.reportViewer.RefreshReport();
+         }*/
     }
 }

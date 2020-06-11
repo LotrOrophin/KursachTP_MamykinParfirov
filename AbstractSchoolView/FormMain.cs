@@ -218,7 +218,7 @@ namespace AbstractSchoolView
                    circleLogic.SaveJsonCircleSchoolSupplie(fbd.SelectedPath);
                     orderLogic.SaveJsonOrder(fbd.SelectedPath);
                     schoolSupplieLogic.SaveJsonSchoolSupplie(fbd.SelectedPath);
-                    report.SendMailReport("mamykinvladimir00gmail.com", fbd.SelectedPath, "JSON копия", "json");
+                    report.SendMailReport("mamykinvladimir00@gmail.com", fbd.SelectedPath, "JSON копия", "json");
                     MessageBox.Show("Резервная копия выслана", "Сообщение",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

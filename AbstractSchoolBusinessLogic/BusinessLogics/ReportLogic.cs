@@ -152,19 +152,19 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
 
         public void SendMail(string email, string fileName, string subject)
         {
-            MailAddress from = new MailAddress("denis_73007@mail.ru", "Школа");
+            MailAddress from = new MailAddress("labwork15kafis@gmail.com", "Школа");
             MailAddress to = new MailAddress(email);
             MailMessage m = new MailMessage(from, to);
             m.Subject = subject;
             m.Attachments.Add(new Attachment(fileName));
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new NetworkCredential("denis_73007@mail.ru", "987-654lL");
+            smtp.Credentials = new NetworkCredential("labwork15kafis@gmail.com", "passlab15");
             smtp.EnableSsl = true;
             smtp.Send(m);
         }
         public void SendMailReport(string email, string fileName, string subject, string type)
         {
-            MailAddress from = new MailAddress("testkursach322@mail.com", "Школа");
+            MailAddress from = new MailAddress("labwork15kafis@gmail.com", "Школа");
             MailAddress to = new MailAddress(email);
             MailMessage m = new MailMessage(from, to);
             m.Subject = subject;
@@ -175,7 +175,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             m.Attachments.Add(new Attachment(fileName + "\\CircleSchoolSupplie." + type));
             m.Attachments.Add(new Attachment(fileName + "\\SchoolSupplie." + type));
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new NetworkCredential("testkursach322@mail.com", "987-654lL");
+            smtp.Credentials = new NetworkCredential("labwork15kafis@gmail.com", "passlab15");
             smtp.EnableSsl = true;
             smtp.Send(m);
         }

@@ -313,23 +313,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Denis\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\mamyk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
       "projectName": "AbstractSchoolBusinessLogic",
-      "projectPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
-      "packagesPath": "C:\\Users\\Denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denis\\source\\repos\\LotrOrophin\\AbstractSchoolBusinessLogic\\obj\\",
+      "projectPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\AbstractSchoolBusinessLogic.csproj",
+      "packagesPath": "C:\\Users\\mamyk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mamyk\\Source\\Repos\\KursachTP_MamykinParfirov\\AbstractSchoolBusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mamyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
