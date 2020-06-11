@@ -162,7 +162,7 @@ namespace SchoolDatabaseImplement.Implements
 
         public void SaveXmlCircle(string folderName)
         {
-            string fileName = $"{folderName}\\Dish.xml";
+            string fileName = $"{folderName}\\Circle.xml";
             using (var context = new SchoolDatabase())
             {
                 XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<Circle>));
@@ -175,7 +175,7 @@ namespace SchoolDatabaseImplement.Implements
 
         public void SaveXmlCircleSchoolSupplie(string folderName)
         {
-            string fileName = $"{folderName}\\DishFood.xml";
+            string fileName = $"{folderName}\\CircleSchoolSupplie.xml";
             using (var context = new SchoolDatabase())
             {
                 XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<CircleSchoolSupplie>));

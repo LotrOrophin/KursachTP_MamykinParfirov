@@ -40,7 +40,7 @@ namespace SchoolWebSupplier.Controllers
                 _wareHouse.SaveJsonWareHouseSchoolSupplie(fileName);
                 _supplier.SaveJsonSupplier(fileName);
                 _schoolSupplie.SaveJsonSchoolSupplie(fileName);
-                _supplierReport.SendMailBackup("lyaysanlabs@gmail.com", fileName, "Бэкап Json", "json");
+                _supplierReport.SendMailBackup("denis_73007@mail.ru", fileName, "Бэкап Json", "json");
                 return RedirectToAction("BackUp");
             }
             else
@@ -50,7 +50,7 @@ namespace SchoolWebSupplier.Controllers
         }
         public IActionResult BackUpToXml()
         {
-            string fileName = "C:\\Users\\Lyays\\Desktop\\Backup\\BackupXml";
+            string fileName = "E:\\BackupXml";
             if (Directory.Exists(fileName))
             {
                 _request.SaveXmlRequest(fileName);
@@ -59,7 +59,7 @@ namespace SchoolWebSupplier.Controllers
                 _wareHouse.SaveXmlWareHouseSchoolSupplie(fileName);
                 _supplier.SaveXmlSupplier(fileName);
                 _schoolSupplie.SaveXmlSchoolSupplie(fileName);
-                _supplierReport.SendMailBackup("lyaysanlabs@gmail.com", fileName, "Бэкап Xml", "xml");
+                _supplierReport.SendMailBackup("denis_73007@mail.ru", fileName, "Бэкап Xml", "xml");
                 return RedirectToAction("BackUp");
             }
             else

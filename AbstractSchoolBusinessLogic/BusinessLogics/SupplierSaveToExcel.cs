@@ -80,7 +80,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                     ShareStringPart = shareStringPart,
                     ColumnName = "B",
                     RowIndex = 3,
-                    Text = "Продукт",
+                    Text = "Канцелярия",
                     StyleIndex = 0U
                 });
                 InsertCellInWorksheet(new ExcelCellParameters

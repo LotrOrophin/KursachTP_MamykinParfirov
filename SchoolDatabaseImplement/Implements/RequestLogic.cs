@@ -198,7 +198,7 @@ namespace SchoolDatabaseImplement.Implements
         }
         public void SaveXmlRequestSchoolSupplie(string folderName)
         {
-            string fileNameDop = $"{folderName}\\RequestFood.xml";
+            string fileNameDop = $"{folderName}\\RequestSchoolSupplie.xml";
             using (var context = new SchoolDatabase())
             {
                 XmlSerializer fomatterXml = new XmlSerializer(typeof(DbSet<RequestSchoolSupplie>));
