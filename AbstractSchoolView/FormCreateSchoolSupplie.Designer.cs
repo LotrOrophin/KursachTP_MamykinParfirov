@@ -38,7 +38,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonCancel.BackColor = System.Drawing.Color.Magenta;
             this.buttonCancel.Location = new System.Drawing.Point(211, 95);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(213, 32);
@@ -49,7 +49,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonSave.BackColor = System.Drawing.Color.Magenta;
             this.buttonSave.Location = new System.Drawing.Point(11, 95);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(174, 32);
@@ -60,7 +60,7 @@
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(99, 69);
+            this.textBoxCount.Location = new System.Drawing.Point(99, 42);
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(325, 20);
             this.textBoxCount.TabIndex = 9;
@@ -76,7 +76,7 @@
             // labelCountComponent
             // 
             this.labelCountComponent.AutoSize = true;
-            this.labelCountComponent.Location = new System.Drawing.Point(27, 72);
+            this.labelCountComponent.Location = new System.Drawing.Point(27, 49);
             this.labelCountComponent.Name = "labelCountComponent";
             this.labelCountComponent.Size = new System.Drawing.Size(66, 13);
             this.labelCountComponent.TabIndex = 7;
@@ -95,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(459, 135);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);

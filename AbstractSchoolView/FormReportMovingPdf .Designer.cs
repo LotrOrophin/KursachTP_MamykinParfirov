@@ -46,7 +46,7 @@ namespace AbstractSchoolView
             // 
             // buttonCreate
             // 
-            this.buttonCreate.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonCreate.BackColor = System.Drawing.Color.Magenta;
             this.buttonCreate.Location = new System.Drawing.Point(494, 11);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(100, 28);
@@ -57,7 +57,7 @@ namespace AbstractSchoolView
             // 
             // buttonCreateToPdf
             // 
-            this.buttonCreateToPdf.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonCreateToPdf.BackColor = System.Drawing.Color.Magenta;
             this.buttonCreateToPdf.Location = new System.Drawing.Point(599, 11);
             this.buttonCreateToPdf.Name = "buttonCreateToPdf";
             this.buttonCreateToPdf.Size = new System.Drawing.Size(91, 28);
@@ -118,7 +118,7 @@ namespace AbstractSchoolView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(698, 359);
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.label2);

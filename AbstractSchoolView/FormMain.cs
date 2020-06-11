@@ -50,8 +50,7 @@ namespace AbstractSchoolView
                 dataGridView.DataSource = listOrders;
                 dataGridView.Columns[0].Visible = false;
                 dataGridView.Columns[1].Visible = false;
-                dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                dataGridView.Columns[6].Visible = false;
+                dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             dataGridView.Update();
         }
@@ -70,7 +69,7 @@ namespace AbstractSchoolView
 
         private void ButtonCreateOrder_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormCreateOrder>();
+            var form = Container.Resolve<FormCreateKurs>();
             form.ShowDialog();
             LoadData();
         }

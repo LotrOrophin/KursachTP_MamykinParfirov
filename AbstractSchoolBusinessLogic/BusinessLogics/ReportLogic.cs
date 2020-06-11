@@ -101,7 +101,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                     Amount = order.Sum,
                     Count = order.Count,
                     CreationDate = order.CreationDate,
-                    OrderStatus = order.OrderStatus
+                    OrderStatus = order.KursStatus
                 };
                 list.Add(record);
             }
@@ -113,7 +113,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = model.FileName,
-                Title = "Список выполненных заказов",
+                Title = "Список законенных курсов",
                 Orders = GetReportOrder(model),
                 CircleSchoolSupplies = GetCircleSchoolSupplies()
             });
@@ -126,7 +126,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 SaveToWord.CreateDoc(new WordInfo
                 {
                     FileName = model.FileName,
-                    Title = "Список выполненных заказов",
+                    Title = "Список завершенных курсов",
                     Orders = GetReportOrder(model),
                     CircleSchoolSupplies = GetCircleSchoolSupplies()
                 });
@@ -135,7 +135,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 throw;
             }
-            SendMail("mamykinvladimir00@gmail.com", model.FileName, "Список кружков с канцелярией");
+            SendMail("mamykinvladimir00@gmail.com", model.FileName, "Список завершенных курсов");
         }
         public void SaveSchoolSuppliesToPdfFile(ReportBindingModel model)
         {
@@ -168,7 +168,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             MailAddress to = new MailAddress(email);
             MailMessage m = new MailMessage(from, to);
             m.Subject = subject;
-            m.Attachments.Add(new Attachment(fileName + "\\Order." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\Kurs." + type));
             m.Attachments.Add(new Attachment(fileName + "\\Request." + type));
             m.Attachments.Add(new Attachment(fileName + "\\RequestSchoolSupplie." + type));
             m.Attachments.Add(new Attachment(fileName + "\\Circle." + type));

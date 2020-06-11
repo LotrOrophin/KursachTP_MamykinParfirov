@@ -39,19 +39,19 @@
             // 
             // buttonOk
             // 
-            this.buttonOk.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonOk.Location = new System.Drawing.Point(463, 237);
+            this.buttonOk.BackColor = System.Drawing.Color.Crimson;
+            this.buttonOk.Location = new System.Drawing.Point(372, 254);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(72, 24);
+            this.buttonOk.Size = new System.Drawing.Size(162, 45);
             this.buttonOk.TabIndex = 13;
-            this.buttonOk.Text = "Ок";
+            this.buttonOk.Text = "Выход";
             this.buttonOk.UseVisualStyleBackColor = false;
             this.buttonOk.Click += new System.EventHandler(this.ButtonOk_Click);
             // 
             // groupBoxComponents
             // 
             this.groupBoxComponents.Controls.Add(this.dataGridViewComponents);
-            this.groupBoxComponents.Location = new System.Drawing.Point(13, 11);
+            this.groupBoxComponents.Location = new System.Drawing.Point(12, 28);
             this.groupBoxComponents.Name = "groupBoxComponents";
             this.groupBoxComponents.Size = new System.Drawing.Size(522, 219);
             this.groupBoxComponents.TabIndex = 11;
@@ -60,9 +60,9 @@
             // 
             // dataGridViewComponents
             // 
-            this.dataGridViewComponents.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.dataGridViewComponents.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.dataGridViewComponents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewComponents.Location = new System.Drawing.Point(4, 17);
+            this.dataGridViewComponents.Location = new System.Drawing.Point(6, 17);
             this.dataGridViewComponents.Name = "dataGridViewComponents";
             this.dataGridViewComponents.RowHeadersWidth = 51;
             this.dataGridViewComponents.Size = new System.Drawing.Size(508, 196);
@@ -70,10 +70,10 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonUpdate.Location = new System.Drawing.Point(376, 237);
+            this.buttonUpdate.BackColor = System.Drawing.Color.Magenta;
+            this.buttonUpdate.Location = new System.Drawing.Point(17, 254);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(72, 24);
+            this.buttonUpdate.Size = new System.Drawing.Size(157, 45);
             this.buttonUpdate.TabIndex = 14;
             this.buttonUpdate.Text = "Обновить";
             this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -81,10 +81,10 @@
             // 
             // buttonContent
             // 
-            this.buttonContent.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonContent.Location = new System.Drawing.Point(10, 237);
+            this.buttonContent.BackColor = System.Drawing.Color.Magenta;
+            this.buttonContent.Location = new System.Drawing.Point(297, 0);
             this.buttonContent.Name = "buttonContent";
-            this.buttonContent.Size = new System.Drawing.Size(111, 24);
+            this.buttonContent.Size = new System.Drawing.Size(229, 36);
             this.buttonContent.TabIndex = 15;
             this.buttonContent.Text = "Содержимое заказа";
             this.buttonContent.UseVisualStyleBackColor = false;
@@ -94,8 +94,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(546, 272);
+            this.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.ClientSize = new System.Drawing.Size(546, 311);
             this.Controls.Add(this.buttonContent);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonOk);

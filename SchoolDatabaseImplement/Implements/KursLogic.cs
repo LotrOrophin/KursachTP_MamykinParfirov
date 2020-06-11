@@ -12,16 +12,16 @@ using System.Xml.Serialization;
 
 namespace SchoolDatabaseImplement.Implements
 {
-    public class OrderLogic : IOrderLogic
+    public class KursLogic : IOrderLogic
     {
-        public void CreateOrUpdate(OrderBindingModel model)
+        public void CreateOrUpdate(KursBindingModel model)
         {
             using (var context = new SchoolDatabase())
             {
-                Order element;
+                Kurs element;
                 if (model.Id.HasValue)
                 {
-                    element = context.Orders.FirstOrDefault(rec => rec.Id ==
+                    element = context.Kurses.FirstOrDefault(rec => rec.Id ==
                    model.Id);
                     if (element == null)
                     {
@@ -30,26 +30,26 @@ namespace SchoolDatabaseImplement.Implements
                 }
                 else
                 {
-                    element = new Order();
-                    context.Orders.Add(element);
+                    element = new Kurs();
+                    context.Kurses.Add(element);
                 }
                 element.CircleId = model.CircleId == 0 ? element.CircleId : model.CircleId;
                 element.Count = model.Count;
                 element.Sum = model.Sum;
-                element.OrderStatus = model.OrderStatus;
+                element.KursStatus = model.KursStatus;
                 element.CreationDate = model.CreationDate;
                 element.CompletionDate = model.CompletionDate;
                 context.SaveChanges();
             }
         }
-        public void Delete(OrderBindingModel model)
+        public void Delete(KursBindingModel model)
         {
             using (var context = new SchoolDatabase())
             {
-                Order element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
+                Kurs element = context.Kurses.FirstOrDefault(rec => rec.Id == model.Id);
                 if (element != null)
                 {
-                    context.Orders.Remove(element);
+                    context.Kurses.Remove(element);
                     context.SaveChanges();
                 }
                 else
@@ -58,23 +58,23 @@ namespace SchoolDatabaseImplement.Implements
                 }
             }
         }
-        public List<OrderViewModel> Read(OrderBindingModel model)
+        public List<KursViewModel> Read(KursBindingModel model)
         {
             using (var context = new SchoolDatabase())
             {
-                return context.Orders
+                return context.Kurses
             .Include(rec => rec.Circle)
             .Where(
                     rec => model == null
                     || (rec.Id == model.Id && model.Id.HasValue)
                     || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.CreationDate >= model.DateFrom && rec.CreationDate <= model.DateTo))
-            .Select(rec => new OrderViewModel
+            .Select(rec => new KursViewModel
             {
                 Id = rec.Id,
                 CircleName = rec.Circle.CircleName,
                 Count = rec.Count,
                 Sum = rec.Circle.PricePerHour,
-                OrderStatus = rec.OrderStatus,
+                KursStatus = rec.KursStatus,
                 CreationDate = rec.CreationDate,
                 CompletionDate = rec.CompletionDate
             })
@@ -84,26 +84,26 @@ namespace SchoolDatabaseImplement.Implements
 
         public void SaveJsonOrder(string folderName)
         {
-            string fileName = $"{folderName}\\Order.json";
+            string fileName = $"{folderName}\\Kurs.json";
             using (var context = new SchoolDatabase())
             {
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Order>));
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Kurs>));
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))
                 {
-                    jsonFormatter.WriteObject(fs, context.Orders);
+                    jsonFormatter.WriteObject(fs, context.Kurses);
                 }
             }
         }
 
         public void SaveXmlOrder(string folderName)
         {
-            string fileName = $"{folderName}\\Order.xml";
+            string fileName = $"{folderName}\\Kurs.xml";
             using (var context = new SchoolDatabase())
             {
-                XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<Order>));
+                XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<Kurs>));
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))
                 {
-                    fomatter.Serialize(fs, context.Orders);
+                    fomatter.Serialize(fs, context.Kurses);
                 }
             }
         }

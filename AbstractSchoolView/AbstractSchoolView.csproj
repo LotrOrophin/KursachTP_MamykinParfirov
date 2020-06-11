@@ -204,11 +204,11 @@
     <Compile Include="FormCirclesSchoolSupplie.Designer.cs">
       <DependentUpon>FormCirclesSchoolSupplie.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCreateOrder.cs">
+    <Compile Include="FormCreateKurs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCreateOrder.Designer.cs">
-      <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    <Compile Include="FormCreateKurs.Designer.cs">
+      <DependentUpon>FormCreateKurs.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCreateRequest.cs">
       <SubType>Form</SubType>
@@ -281,11 +281,17 @@
     <EmbeddedResource Include="FormCirclesSchoolSupplie.resx">
       <DependentUpon>FormCirclesSchoolSupplie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCreateKurs.resx">
+      <DependentUpon>FormCreateKurs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCreateRequest.resx">
       <DependentUpon>FormCreateRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCreateSchoolSupplie.resx">
       <DependentUpon>FormCreateSchoolSupplie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEnter.resx">
+      <DependentUpon>FormEnter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRequest.resx">
       <DependentUpon>FormRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRequestSchoolSupplie.resx">
+      <DependentUpon>FormRequestSchoolSupplie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSchoolSupplie.resx">
       <DependentUpon>FormSchoolSupplie.cs</DependentUpon>

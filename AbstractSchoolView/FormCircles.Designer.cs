@@ -38,7 +38,7 @@
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonRefresh.BackColor = System.Drawing.Color.Crimson;
             this.buttonRefresh.Location = new System.Drawing.Point(12, 276);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(167, 28);
@@ -49,8 +49,8 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonDelete.Location = new System.Drawing.Point(12, 79);
+            this.buttonDelete.BackColor = System.Drawing.Color.Magenta;
+            this.buttonDelete.Location = new System.Drawing.Point(12, 242);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(167, 28);
             this.buttonDelete.TabIndex = 8;
@@ -60,8 +60,8 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonUpdate.Location = new System.Drawing.Point(12, 45);
+            this.buttonUpdate.BackColor = System.Drawing.Color.Magenta;
+            this.buttonUpdate.Location = new System.Drawing.Point(12, 208);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(167, 28);
             this.buttonUpdate.TabIndex = 7;
@@ -71,10 +71,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonAdd.BackColor = System.Drawing.Color.Magenta;
             this.buttonAdd.Location = new System.Drawing.Point(12, 12);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(167, 27);
+            this.buttonAdd.Size = new System.Drawing.Size(167, 61);
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = false;
@@ -82,7 +82,7 @@
             // 
             // dataGridViewCircles
             // 
-            this.dataGridViewCircles.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.dataGridViewCircles.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.dataGridViewCircles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCircles.Location = new System.Drawing.Point(199, 12);
             this.dataGridViewCircles.Name = "dataGridViewCircles";
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(709, 320);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonDelete);

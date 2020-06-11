@@ -113,7 +113,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                 {
                     foreach (var date in info.Orders)
                     {
-                        if ((date.OrderStatus == Enums.OrderStatus.Оплачен) || (date.OrderStatus == Enums.OrderStatus.Готов))
+                        if ((date.OrderStatus == Enums.KursStatus.Оплачен) || (date.OrderStatus == Enums.KursStatus.Завершен))
                         {
                             InsertCellInWorksheet(new ExcelCellParameters
                             {

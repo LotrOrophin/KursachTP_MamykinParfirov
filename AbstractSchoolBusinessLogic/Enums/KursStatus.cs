@@ -4,11 +4,11 @@ using System.Text;
 
 namespace AbstractSchoolBusinessLogic.Enums
 {
-    public enum OrderStatus
+    public enum KursStatus
     {
-        Принят = 0,
-        Выполняется = 1,
-        Готов = 2,
+        Подготавливается = 0,
+        ВПроцессе = 1,
+        Завершен = 2,
         Оплачен = 3
     }
 }

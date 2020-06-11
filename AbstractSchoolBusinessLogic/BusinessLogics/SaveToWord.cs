@@ -31,7 +31,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                 {
                     foreach (var orders in info.Orders)
                     {
-                        if ((orders.OrderStatus == Enums.OrderStatus.Готов) || (orders.OrderStatus == Enums.OrderStatus.Оплачен))
+                        if ((orders.OrderStatus == Enums.KursStatus.Завершен) || (orders.OrderStatus == Enums.KursStatus.Оплачен))
                         {
                             docBody.AppendChild(CreateParagraph(new WordParagraph
                             {

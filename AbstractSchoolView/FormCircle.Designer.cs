@@ -85,17 +85,17 @@
             this.groupBoxComponents.Controls.Add(this.dataGridViewComponents);
             this.groupBoxComponents.Location = new System.Drawing.Point(12, 84);
             this.groupBoxComponents.Name = "groupBoxComponents";
-            this.groupBoxComponents.Size = new System.Drawing.Size(466, 219);
+            this.groupBoxComponents.Size = new System.Drawing.Size(584, 258);
             this.groupBoxComponents.TabIndex = 4;
             this.groupBoxComponents.TabStop = false;
             this.groupBoxComponents.Text = "Канцелярия";
             // 
             // buttonDelete
             // 
-            this.buttonDelete.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonDelete.Location = new System.Drawing.Point(388, 79);
+            this.buttonDelete.BackColor = System.Drawing.Color.Magenta;
+            this.buttonDelete.Location = new System.Drawing.Point(10, 197);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(72, 24);
+            this.buttonDelete.Size = new System.Drawing.Size(165, 31);
             this.buttonDelete.TabIndex = 4;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = false;
@@ -103,10 +103,10 @@
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonRefresh.Location = new System.Drawing.Point(388, 109);
+            this.buttonRefresh.BackColor = System.Drawing.Color.Magenta;
+            this.buttonRefresh.Location = new System.Drawing.Point(10, 157);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(72, 24);
+            this.buttonRefresh.Size = new System.Drawing.Size(165, 34);
             this.buttonRefresh.TabIndex = 3;
             this.buttonRefresh.Text = "Обновить";
             this.buttonRefresh.UseVisualStyleBackColor = false;
@@ -114,10 +114,10 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonUpdate.Location = new System.Drawing.Point(388, 49);
+            this.buttonUpdate.BackColor = System.Drawing.Color.Magenta;
+            this.buttonUpdate.Location = new System.Drawing.Point(10, 120);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(72, 24);
+            this.buttonUpdate.Size = new System.Drawing.Size(165, 31);
             this.buttonUpdate.TabIndex = 2;
             this.buttonUpdate.Text = "Изменить";
             this.buttonUpdate.UseVisualStyleBackColor = false;
@@ -125,10 +125,10 @@
             // 
             // buttonAddComponent
             // 
-            this.buttonAddComponent.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonAddComponent.Location = new System.Drawing.Point(388, 19);
+            this.buttonAddComponent.BackColor = System.Drawing.Color.Magenta;
+            this.buttonAddComponent.Location = new System.Drawing.Point(10, 29);
             this.buttonAddComponent.Name = "buttonAddComponent";
-            this.buttonAddComponent.Size = new System.Drawing.Size(72, 24);
+            this.buttonAddComponent.Size = new System.Drawing.Size(165, 58);
             this.buttonAddComponent.TabIndex = 1;
             this.buttonAddComponent.Text = "Добавить";
             this.buttonAddComponent.UseVisualStyleBackColor = false;
@@ -136,20 +136,20 @@
             // 
             // dataGridViewComponents
             // 
-            this.dataGridViewComponents.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.dataGridViewComponents.BackgroundColor = System.Drawing.Color.Honeydew;
             this.dataGridViewComponents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewComponents.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewComponents.Location = new System.Drawing.Point(181, 19);
             this.dataGridViewComponents.Name = "dataGridViewComponents";
             this.dataGridViewComponents.RowHeadersWidth = 51;
-            this.dataGridViewComponents.Size = new System.Drawing.Size(376, 191);
+            this.dataGridViewComponents.Size = new System.Drawing.Size(397, 233);
             this.dataGridViewComponents.TabIndex = 0;
             // 
             // buttonSave
             // 
-            this.buttonSave.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonSave.Location = new System.Drawing.Point(310, 308);
+            this.buttonSave.BackColor = System.Drawing.Color.Crimson;
+            this.buttonSave.Location = new System.Drawing.Point(22, 348);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(72, 24);
+            this.buttonSave.Size = new System.Drawing.Size(242, 39);
             this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -157,10 +157,10 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonCancel.Location = new System.Drawing.Point(400, 308);
+            this.buttonCancel.BackColor = System.Drawing.Color.Crimson;
+            this.buttonCancel.Location = new System.Drawing.Point(339, 348);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(72, 24);
+            this.buttonCancel.Size = new System.Drawing.Size(237, 39);
             this.buttonCancel.TabIndex = 6;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -170,8 +170,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(490, 335);
+            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.ClientSize = new System.Drawing.Size(608, 412);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBoxComponents);

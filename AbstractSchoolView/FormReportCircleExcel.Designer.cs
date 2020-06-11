@@ -35,7 +35,7 @@
             // 
             // dataGridViewSchoolSupplieCircle
             // 
-            this.dataGridViewSchoolSupplieCircle.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.dataGridViewSchoolSupplieCircle.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.dataGridViewSchoolSupplieCircle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSchoolSupplieCircle.Location = new System.Drawing.Point(10, 40);
             this.dataGridViewSchoolSupplieCircle.Name = "dataGridViewSchoolSupplieCircle";
@@ -45,8 +45,8 @@
             // 
             // buttonSaveToExcel
             // 
-            this.buttonSaveToExcel.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonSaveToExcel.Location = new System.Drawing.Point(388, 11);
+            this.buttonSaveToExcel.BackColor = System.Drawing.Color.Magenta;
+            this.buttonSaveToExcel.Location = new System.Drawing.Point(358, 11);
             this.buttonSaveToExcel.Name = "buttonSaveToExcel";
             this.buttonSaveToExcel.Size = new System.Drawing.Size(137, 23);
             this.buttonSaveToExcel.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(535, 255);
             this.Controls.Add(this.buttonSaveToExcel);
             this.Controls.Add(this.dataGridViewSchoolSupplieCircle);

@@ -38,7 +38,7 @@
             // 
             // dataGridView
             // 
-            this.dataGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(232, 12);
             this.dataGridView.Name = "dataGridView";
@@ -48,7 +48,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonAdd.BackColor = System.Drawing.Color.Magenta;
             this.buttonAdd.Location = new System.Drawing.Point(12, 12);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(204, 40);
@@ -59,7 +59,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonUpdate.BackColor = System.Drawing.Color.Magenta;
             this.buttonUpdate.Location = new System.Drawing.Point(12, 68);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(204, 28);
@@ -70,7 +70,8 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonDelete.BackColor = System.Drawing.Color.Magenta;
+            this.buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.buttonDelete.Location = new System.Drawing.Point(12, 111);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(204, 28);
@@ -81,7 +82,7 @@
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonRefresh.BackColor = System.Drawing.Color.Magenta;
             this.buttonRefresh.Location = new System.Drawing.Point(12, 290);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(204, 28);
@@ -94,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(757, 330);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonDelete);

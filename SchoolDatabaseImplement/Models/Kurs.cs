@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SchoolDatabaseImplement.Models
 {
-    public class Order
+    public class Kurs
     {
         public int Id { get; set; }
         [Required]
@@ -17,7 +17,7 @@ namespace SchoolDatabaseImplement.Models
         public decimal Sum { get; set; }
         public DateTime? CompletionDate { get; set; }
         [Required]
-        public OrderStatus OrderStatus { get; set; }
+        public KursStatus KursStatus { get; set; }
         public int CircleId { get; set; }
         public Circle Circle { get; set; }
     }

@@ -54,7 +54,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonSave.BackColor = System.Drawing.Color.Magenta;
             this.buttonSave.Location = new System.Drawing.Point(12, 86);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(180, 40);
@@ -65,7 +65,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonCancel.BackColor = System.Drawing.Color.Magenta;
             this.buttonCancel.Location = new System.Drawing.Point(223, 86);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(168, 40);
@@ -94,8 +94,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(403, 189);
+            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.ClientSize = new System.Drawing.Size(403, 139);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.buttonCancel);

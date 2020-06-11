@@ -45,8 +45,8 @@
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonRefresh.Location = new System.Drawing.Point(453, 204);
+            this.buttonRefresh.BackColor = System.Drawing.Color.Magenta;
+            this.buttonRefresh.Location = new System.Drawing.Point(535, 193);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(168, 33);
             this.buttonRefresh.TabIndex = 14;
@@ -56,8 +56,8 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonDelete.Location = new System.Drawing.Point(453, 164);
+            this.buttonDelete.BackColor = System.Drawing.Color.Magenta;
+            this.buttonDelete.Location = new System.Drawing.Point(535, 154);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(168, 33);
             this.buttonDelete.TabIndex = 13;
@@ -67,8 +67,8 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonUpdate.Location = new System.Drawing.Point(453, 124);
+            this.buttonUpdate.BackColor = System.Drawing.Color.Magenta;
+            this.buttonUpdate.Location = new System.Drawing.Point(534, 115);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(169, 33);
             this.buttonUpdate.TabIndex = 12;
@@ -78,10 +78,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonAdd.Location = new System.Drawing.Point(453, 55);
+            this.buttonAdd.BackColor = System.Drawing.Color.Magenta;
+            this.buttonAdd.Location = new System.Drawing.Point(535, 12);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(170, 62);
+            this.buttonAdd.Size = new System.Drawing.Size(170, 81);
             this.buttonAdd.TabIndex = 11;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
             this.comboBoxSupplier.FormattingEnabled = true;
             this.comboBoxSupplier.Location = new System.Drawing.Point(75, 13);
             this.comboBoxSupplier.Name = "comboBoxSupplier";
-            this.comboBoxSupplier.Size = new System.Drawing.Size(373, 21);
+            this.comboBoxSupplier.Size = new System.Drawing.Size(452, 21);
             this.comboBoxSupplier.TabIndex = 16;
             // 
             // label1
@@ -106,7 +106,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonCancel.BackColor = System.Drawing.Color.Crimson;
             this.buttonCancel.Location = new System.Drawing.Point(349, 256);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(272, 29);
@@ -117,7 +117,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.BackColor = System.Drawing.Color.AliceBlue;
+            this.buttonSave.BackColor = System.Drawing.Color.Crimson;
             this.buttonSave.Location = new System.Drawing.Point(11, 255);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(309, 30);
@@ -133,9 +133,9 @@
             this.schoolSupplieId,
             this.schoolSupplieName,
             this.schoolSupplieCountColumn});
-            this.SchoolSupplieGridView.Location = new System.Drawing.Point(12, 51);
+            this.SchoolSupplieGridView.Location = new System.Drawing.Point(85, 41);
             this.SchoolSupplieGridView.Name = "SchoolSupplieGridView";
-            this.SchoolSupplieGridView.Size = new System.Drawing.Size(425, 185);
+            this.SchoolSupplieGridView.Size = new System.Drawing.Size(442, 185);
             this.SchoolSupplieGridView.TabIndex = 19;
             // 
             // schoolSupplieId
@@ -163,8 +163,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(637, 295);
+            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.ClientSize = new System.Drawing.Size(715, 303);
             this.Controls.Add(this.SchoolSupplieGridView);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);

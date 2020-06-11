@@ -15,7 +15,7 @@ using Unity;
 
 namespace AbstractSchoolView
 {
-    public partial class FormCreateOrder : Form
+    public partial class FormCreateKurs : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
@@ -27,7 +27,7 @@ namespace AbstractSchoolView
         private int? Id;
         private readonly ISupplierLogic supplierLogic;
 
-        public FormCreateOrder(ICircleLogic logicP, MainLogic logicM,
+        public FormCreateKurs(ICircleLogic logicP, MainLogic logicM,
             IRequestLogic requestLogic, ISupplierLogic supplierLogic)
         {
             InitializeComponent();
@@ -153,7 +153,7 @@ namespace AbstractSchoolView
             }
             try
             {
-                logicM.CreateOrder(new OrderBindingModel
+                logicM.CreateOrder(new KursBindingModel
                 {
                     CircleId = Convert.ToInt32(comboBoxProduct.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),

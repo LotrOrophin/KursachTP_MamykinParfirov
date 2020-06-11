@@ -21,63 +21,63 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             this.circleLogic = circleLogic;
         }
 
-        public void CreateOrder(OrderBindingModel order)
+        public void CreateOrder(KursBindingModel order)
         {
-            orderLogic.CreateOrUpdate(new OrderBindingModel
+            orderLogic.CreateOrUpdate(new KursBindingModel
             {
                 CircleId = order.CircleId,
                 Count = order.Count,
                 CreationDate = DateTime.Now,
-                OrderStatus = OrderStatus.Принят
+                KursStatus = KursStatus.Подготавливается
             });
         }
 
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {
-            var order = orderLogic.Read(new OrderBindingModel { Id = model.OrderId })?[0];
+            var order = orderLogic.Read(new KursBindingModel { Id = model.OrderId })?[0];
             var request = requestLogic.Read(new RequestBindingModel { Id = model.OrderId })?[0];
             if (order == null)
             {
-                throw new Exception("Не найден заказ");
+                throw new Exception("Не найден такой курс");
             }
 
-            if (order.OrderStatus != OrderStatus.Принят)
+            if (order.KursStatus != KursStatus.Подготавливается)
             {
-                throw new Exception("Заказ не в статусе \"Принят\"");
+                throw new Exception("Курс еще не рассмотрен");
             }
 
             if (request.Status != RequestStatus.Готова)
             {
-                throw new Exception("Продукты ещё не доставлены");
+                throw new Exception("Поставка еще не произведена");
             }
             requestLogic.CreateOrUpdate(new RequestBindingModel
             {
                 Status = RequestStatus.Обработана
             });
 
-            orderLogic.CreateOrUpdate(new OrderBindingModel
+            orderLogic.CreateOrUpdate(new KursBindingModel
             {
                 Id = order.Id,
                 CircleId = order.CircleId,
                 Count = order.Count,
                 Sum = order.Sum,
                 CreationDate = order.CreationDate,
-                OrderStatus = OrderStatus.Выполняется
+                KursStatus = KursStatus.ВПроцессе
             });
         }
 
         public void FinishOrder(ChangeStatusBindingModel model)
         {
-            var order = orderLogic.Read(new OrderBindingModel { Id = model.OrderId })?[0];
+            var order = orderLogic.Read(new KursBindingModel { Id = model.OrderId })?[0];
             if (order == null)
             {
-                throw new Exception("Не найден заказ");
+                throw new Exception("Не найден такой курс");
             }
-            if (order.OrderStatus != OrderStatus.Выполняется)
+            if (order.KursStatus != KursStatus.ВПроцессе)
             {
-                throw new Exception("Заказ не в статусе \"Выполняется\"");
+                throw new Exception("Курс еще не начался");
             }
-            orderLogic.CreateOrUpdate(new OrderBindingModel
+            orderLogic.CreateOrUpdate(new KursBindingModel
             {
                 Id = order.Id,
                 CircleId = order.CircleId,
@@ -85,22 +85,22 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 Sum = order.Sum,
                 CreationDate = order.CreationDate,
                 CompletionDate = DateTime.Now,
-                OrderStatus = OrderStatus.Готов
+                KursStatus = KursStatus.Завершен
             });
         }
 
         public void PayOrder(ChangeStatusBindingModel model)
         {
-            var order = orderLogic.Read(new OrderBindingModel { Id = model.OrderId })?[0];
+            var order = orderLogic.Read(new KursBindingModel { Id = model.OrderId })?[0];
             if (order == null)
             {
-                throw new Exception("Не найден заказ");
+                throw new Exception("Не найден курс");
             }
-            if (order.OrderStatus != OrderStatus.Готов)
+            if (order.KursStatus != KursStatus.Завершен)
             {
-                throw new Exception("Заказ не в статусе \"Готов\"");
+                throw new Exception("Курс еще не завершился");
             }
-            orderLogic.CreateOrUpdate(new OrderBindingModel
+            orderLogic.CreateOrUpdate(new KursBindingModel
             {
                 Id = order.Id,
                 CircleId = order.CircleId,
@@ -108,7 +108,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 Sum = order.Sum,
                 CreationDate = order.CreationDate,
                 CompletionDate = order.CompletionDate,
-                OrderStatus = OrderStatus.Оплачен
+                KursStatus = KursStatus.Оплачен
             });
         }
         public void CreateOrUpdateRequest(RequestBindingModel model)

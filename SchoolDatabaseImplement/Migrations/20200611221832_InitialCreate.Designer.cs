@@ -10,8 +10,8 @@ using SchoolDatabaseImplement;
 namespace SchoolDatabaseImplement.Migrations
 {
     [DbContext(typeof(SchoolDatabase))]
-    [Migration("20200611115849_IntialCreate")]
-    partial class IntialCreate
+    [Migration("20200611221832_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,7 @@ namespace SchoolDatabaseImplement.Migrations
                     b.ToTable("CircleSchoolSupplies");
                 });
 
-            modelBuilder.Entity("SchoolDatabaseImplement.Models.Order", b =>
+            modelBuilder.Entity("SchoolDatabaseImplement.Models.Kurs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,7 +84,7 @@ namespace SchoolDatabaseImplement.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OrderStatus")
+                    b.Property<int>("KursStatus")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Sum")
@@ -94,7 +94,7 @@ namespace SchoolDatabaseImplement.Migrations
 
                     b.HasIndex("CircleId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Kurses");
                 });
 
             modelBuilder.Entity("SchoolDatabaseImplement.Models.Request", b =>
@@ -273,7 +273,7 @@ namespace SchoolDatabaseImplement.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SchoolDatabaseImplement.Models.Order", b =>
+            modelBuilder.Entity("SchoolDatabaseImplement.Models.Kurs", b =>
                 {
                     b.HasOne("SchoolDatabaseImplement.Models.Circle", "Circle")
                         .WithMany()

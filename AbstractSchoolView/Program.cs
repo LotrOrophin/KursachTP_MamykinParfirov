@@ -41,7 +41,7 @@ namespace AbstractSchoolView
                 (new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportLogic>
                 (new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IOrderLogic, OrderLogic>
+            currentContainer.RegisterType<IOrderLogic, KursLogic>
                 (new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IWareHouseLogic, WareHouseLogic>
                 (new HierarchicalLifetimeManager());

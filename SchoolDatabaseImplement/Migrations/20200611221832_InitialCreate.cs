@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SchoolDatabaseImplement.Migrations
 {
-    public partial class IntialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,7 +51,7 @@ namespace SchoolDatabaseImplement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Kurses",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -60,14 +60,14 @@ namespace SchoolDatabaseImplement.Migrations
                     Count = table.Column<int>(nullable: false),
                     Sum = table.Column<decimal>(nullable: false),
                     CompletionDate = table.Column<DateTime>(nullable: true),
-                    OrderStatus = table.Column<int>(nullable: false),
+                    KursStatus = table.Column<int>(nullable: false),
                     CircleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_Kurses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Circles_CircleId",
+                        name: "FK_Kurses_Circles_CircleId",
                         column: x => x.CircleId,
                         principalTable: "Circles",
                         principalColumn: "Id",
@@ -220,8 +220,8 @@ namespace SchoolDatabaseImplement.Migrations
                 column: "SchoolSupplieId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CircleId",
-                table: "Orders",
+                name: "IX_Kurses_CircleId",
+                table: "Kurses",
                 column: "CircleId");
 
             migrationBuilder.CreateIndex(
@@ -266,7 +266,7 @@ namespace SchoolDatabaseImplement.Migrations
                 name: "CircleSchoolSupplies");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Kurses");
 
             migrationBuilder.DropTable(
                 name: "RequestsSchoolSupplies");

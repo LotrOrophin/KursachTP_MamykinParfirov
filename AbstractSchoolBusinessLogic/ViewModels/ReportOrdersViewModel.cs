@@ -11,6 +11,6 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         public string CircleName { get; set; }
         public int Count { get; set; }
         public decimal Amount { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public KursStatus OrderStatus { get; set; }
     }
 }

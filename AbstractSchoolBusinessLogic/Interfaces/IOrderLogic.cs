@@ -8,9 +8,9 @@ namespace AbstractSchoolBusinessLogic.Interfaces
 {
     public interface IOrderLogic
     {
-        List<OrderViewModel> Read(OrderBindingModel model);
-        void CreateOrUpdate(OrderBindingModel model);
-        void Delete(OrderBindingModel model);
+        List<KursViewModel> Read(KursBindingModel model);
+        void CreateOrUpdate(KursBindingModel model);
+        void Delete(KursBindingModel model);
         void SaveJsonOrder(string folderName);
         void SaveXmlOrder(string folderName);
     }
