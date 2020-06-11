@@ -66,8 +66,8 @@ namespace SchoolDatabaseImplement.Implements
             using (var context = new SchoolDatabase())
             {
                 return context.Suppliers
-                 .Where(rec => model == null || rec.Id == model.Id || (rec.Email == model.Login) &&
-                 (model.Password == null || rec.Password == model.Password))
+                .Where(rec => model == null || rec.Id == model.Id || ((rec.Email == model.Login) &&
+                 (rec.Password == model.Password)))
                 .Select(rec => new SupplierViewModel
                 {
                     Id = rec.Id,

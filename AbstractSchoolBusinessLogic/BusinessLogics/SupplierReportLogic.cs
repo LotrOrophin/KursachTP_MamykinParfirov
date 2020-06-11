@@ -29,10 +29,10 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             })?[0].SchoolSupplies;
             return requestFoods;
         }
-        public List<ReportSchoolSupplieViewModel> GetSchoolSupplies(DateTime? from, DateTime? to)
+        public List<ReportSchoolSupplieViewModel> GetSchoolSupplies(RequestBindingModel model)
         {
             var schoolSupplies = schoolSupplieLogic.Read(null);
-            var requests = requestLogic.Read(null);
+            var requests = requestLogic.Read(model);
             var list = new List<ReportSchoolSupplieViewModel>();
             foreach (var request in requests)
             {
@@ -44,12 +44,14 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                         {
                             var record = new ReportSchoolSupplieViewModel
                             {
+                                RequestId = request.Id,
                                 SupplierFIO = request.SupplierFIO,
                                 SchoolSupplieName = requestFood.Value.Item1,
                                 Count = requestFood.Value.Item2,
                                 Status = StatusSchoolSupplie(request.Status),
                                 CompletionDate = request.CompletionDate,
-                                PricePerHour = schoolSupplie.Price
+                                PricePerHour = schoolSupplie.Price,
+                                Sum = request.Sum
                             };
                             list.Add(record);
                         }
@@ -96,7 +98,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 FileName = fileName,
                 Title = title,
-                SchoolSupplies = GetSchoolSupplies(model.DateFrom, model.DateTo)
+                SchoolSupplies = GetSchoolSupplies(model)
             });
             SendMail(email, fileName, title);
         }

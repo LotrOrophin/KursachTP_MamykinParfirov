@@ -11,13 +11,13 @@
                 <a class="nav-link text-light" asp-area="" asp-controller="WareHouse" asp-action="ListSchoolSupplies">Склад</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" asp-area="" asp-controller="Supplier" asp-action="Logout">Выход</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-controller="BackUp" asp-action="BackUp">Бэкап</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" asp-area="" asp-action="Report">Отчет по канцеляриим</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-area="" asp-controller="Supplier" asp-action="Logout">Выход</a>
             </li>
         </ul>
     </div>
@@ -42,30 +42,35 @@
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sum)
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @if (item.Status == AbstractSchoolBusinessLogic.Enums.RequestStatus.Выполняется)
-                    {
-                        <a class="btn btn-primary btn-sm btn-block" asp-action="RequestView" asp-route-id="@item.Id">Просмотр заявки</a>
-                    }
-                    @if (item.Status == AbstractSchoolBusinessLogic.Enums.RequestStatus.Создана)
-                    {
-                        <a class="btn btn-primary btn-sm btn-block" asp-action="AcceptRequest" asp-route-id="@item.Id">Принять в обработку</a>
-                    }
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sum)
+            </td>
+            <td>
+                @if (item.Status == AbstractSchoolBusinessLogic.Enums.RequestStatus.Выполняется)
+                {
+                    <a class="btn btn-primary btn-sm btn-block" asp-action="RequestView" asp-route-id="@item.Id">Просмотр заявки</a>
+                }
+                @if (item.Status == AbstractSchoolBusinessLogic.Enums.RequestStatus.Создана)
+                {
+                    <a class="btn btn-primary btn-sm btn-block" asp-action="AcceptRequest" asp-route-id="@item.Id">Принять в обработку</a>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>

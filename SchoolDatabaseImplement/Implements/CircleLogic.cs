@@ -134,12 +134,12 @@ namespace SchoolDatabaseImplement.Implements
                 }).ToList();
             }
         }
-        public void SaveJson(string folderName)
+        public void SaveJsonCircle(string folderName)
         {
             string fileName = $"{folderName}\\Circle.json";
             using (var context = new SchoolDatabase())
             {
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Circle>));
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<Circle>));
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))
                 {
                     jsonFormatter.WriteObject(fs, context.Circles);
@@ -147,15 +147,41 @@ namespace SchoolDatabaseImplement.Implements
             }
         }
 
-        public void SaveXml(string folderName)
+        public void SaveJsonCircleSchoolSupplie(string folderName)
         {
-            string fileName = $"{folderName}\\Circle.xml";
+            string fileName = $"{folderName}\\CircleSchoolSupplie.json";
+            using (var context = new SchoolDatabase())
+            {
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(IEnumerable<CircleSchoolSupplie>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, context.CircleSchoolSupplies);
+                }
+            }
+        }
+
+        public void SaveXmlCircle(string folderName)
+        {
+            string fileName = $"{folderName}\\Dish.xml";
             using (var context = new SchoolDatabase())
             {
                 XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<Circle>));
                 using (FileStream fs = new FileStream(fileName, FileMode.Create))
                 {
                     fomatter.Serialize(fs, context.Circles);
+                }
+            }
+        }
+
+        public void SaveXmlCircleSchoolSupplie(string folderName)
+        {
+            string fileName = $"{folderName}\\DishFood.xml";
+            using (var context = new SchoolDatabase())
+            {
+                XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<CircleSchoolSupplie>));
+                using (FileStream fs = new FileStream(fileName, FileMode.Create))
+                {
+                    fomatter.Serialize(fs, context.CircleSchoolSupplies);
                 }
             }
         }

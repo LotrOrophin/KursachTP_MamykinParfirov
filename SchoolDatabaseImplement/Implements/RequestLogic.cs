@@ -50,6 +50,8 @@ namespace SchoolDatabaseImplement.Implements
                             context.Requests.Add(request);
                         }
                         request.SupplierId = model.SupplierId;
+                        request.Sum = model.Sum;
+                        request.CreationDate = model.CreationDate;
                         request.Status = model.Status;
                         context.SaveChanges();
                         foreach (var SchoolSupplie in model.SchoolSupllies)
@@ -118,19 +120,26 @@ namespace SchoolDatabaseImplement.Implements
             {
                 return context.Requests
                     .Include(rec => rec.Supplier)
-                    .Where(rec => model == null || rec.Id == model.Id || rec.SupplierId == model.SupplierId)
+                    .Where(rec => model == null || rec.Id == model.Id || (rec.SupplierId == model.SupplierId) && (model.DateFrom == null && model.DateTo == null ||
+                    rec.CompletionDate >= model.DateFrom && rec.CompletionDate <= model.DateTo && rec.Status == RequestStatus.Готова))
                     .ToList()
                     .Select(rec => new RequestViewModel
                     {
                         Id = rec.Id,
                         SupplierFIO = rec.Supplier.SupplierFIO,
-                        SupplierId = rec.SupplierId,
                         Status = rec.Status,
+                        CompletionDate = rec.CompletionDate,
+                        CreationDate = rec.CreationDate,
+                        SupplierId = rec.SupplierId,
                         SchoolSupplies = context.RequestsSchoolSupplies
                             .Include(recRF => recRF.SchoolSupplie)
                             .Where(recRF => recRF.RequestId == rec.Id)
                             .ToDictionary(recRF => recRF.SchoolSupplieId, recRF =>
-                            (recRF.SchoolSupplie?.SchoolSupplieName, recRF.Count, recRF.Inres))
+                            (recRF.SchoolSupplie?.SchoolSupplieName, recRF.Count, recRF.Inres)),
+                        Sum = Decimal.Round(context.RequestsSchoolSupplies
+                            .Include(recRF => recRF.SchoolSupplie)
+                            .Where(recRF => recRF.RequestId == rec.Id)
+                            .Sum(recRF => recRF.SchoolSupplie.Price * recRF.Count), 2)
                     })
                     .ToList();
             }

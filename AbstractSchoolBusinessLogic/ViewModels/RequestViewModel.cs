@@ -15,8 +15,12 @@ namespace AbstractSchoolBusinessLogic.ViewModels
         public string SupplierFIO { get; set; }
         [DisplayName("Статус")]
         public RequestStatus Status { get; set; }
+        [DisplayName("Дата создания")]
+        public DateTime? CreationDate { get; set; }
         [DisplayName("Дата выполнения")]
-        public DateTime CompletionDate { get; set; }
+        public DateTime? CompletionDate { get; set; }
+        [DisplayName("Сумма")]
+        public decimal Sum { get; set; }
         public Dictionary<int, (string, int, bool)> SchoolSupplies { get; set; }
     }
 }

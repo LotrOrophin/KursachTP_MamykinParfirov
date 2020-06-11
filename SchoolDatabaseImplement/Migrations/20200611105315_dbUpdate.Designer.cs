@@ -10,8 +10,8 @@ using SchoolDatabaseImplement;
 namespace SchoolDatabaseImplement.Migrations
 {
     [DbContext(typeof(SchoolDatabase))]
-    [Migration("20200610152436_DBUpdateDenis")]
-    partial class DBUpdateDenis
+    [Migration("20200611105315_dbUpdate")]
+    partial class dbUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,8 +104,18 @@ namespace SchoolDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime?>("CompletionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("Sum")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("SupplierId")
                         .HasColumnType("int");
@@ -288,7 +298,7 @@ namespace SchoolDatabaseImplement.Migrations
                         .HasForeignKey("CircleId");
 
                     b.HasOne("SchoolDatabaseImplement.Models.Request", "Request")
-                        .WithMany("RequestFoods")
+                        .WithMany("RequestSchoolSupplies")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

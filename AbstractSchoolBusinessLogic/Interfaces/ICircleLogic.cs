@@ -11,7 +11,9 @@ namespace AbstractSchoolBusinessLogic.Interfaces
         List<CircleViewModel> Read(CircleBindingModel model);
         void CreateOrUpdate(CircleBindingModel model);
         void Delete(CircleBindingModel model);
-        void SaveJson(string folderName);
-        void SaveXml(string folderName);
+        void SaveJsonCircle(string folderName);
+        void SaveXmlCircle(string folderName);
+        void SaveJsonCircleSchoolSupplie(string folderName);
+        void SaveXmlCircleSchoolSupplie(string folderName);
     }
 }

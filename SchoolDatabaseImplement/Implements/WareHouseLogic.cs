@@ -155,6 +155,9 @@ namespace SchoolDatabaseImplement.Implements
                 {
                     wareHouseSchoolSupplies.Free += model.Count;
                 }
+                SchoolSupplie element = context.SchoolSupplies.FirstOrDefault(rec =>
+                    rec.Id == model.SchoolSupplieId);
+                element.Price = model.PricePerHour;
                 context.SaveChanges();
             }
         }

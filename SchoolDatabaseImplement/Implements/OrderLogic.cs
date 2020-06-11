@@ -82,9 +82,9 @@ namespace SchoolDatabaseImplement.Implements
             }
         }
 
-        public void SaveJson(string folderName)
+        public void SaveJsonOrder(string folderName)
         {
-            string fileName = $"{folderName}\\order.json";
+            string fileName = $"{folderName}\\Order.json";
             using (var context = new SchoolDatabase())
             {
                 DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(List<Order>));
@@ -95,9 +95,9 @@ namespace SchoolDatabaseImplement.Implements
             }
         }
 
-        public void SaveXml(string folderName)
+        public void SaveXmlOrder(string folderName)
         {
-            string fileName = $"{folderName}\\order.xml";
+            string fileName = $"{folderName}\\Order.xml";
             using (var context = new SchoolDatabase())
             {
                 XmlSerializer fomatter = new XmlSerializer(typeof(DbSet<Order>));

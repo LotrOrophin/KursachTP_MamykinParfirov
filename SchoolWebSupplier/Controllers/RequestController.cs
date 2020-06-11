@@ -19,12 +19,14 @@ namespace SchoolWebSupplier.Controllers
         private readonly IWareHouseLogic wareHouseLogic;
         private readonly SupplierBusinessLogic supplierLogic;
         private readonly SupplierReportLogic reportLogic;
-        public RequestController(IRequestLogic requestLogic, IWareHouseLogic wareHouseLogic, SupplierBusinessLogic supplierLogic, SupplierReportLogic reportLogic)
+        private readonly ISchoolSupplieLogic schoolSupplieLogic;
+        public RequestController(IRequestLogic requestLogic, IWareHouseLogic wareHouseLogic, SupplierBusinessLogic supplierLogic, SupplierReportLogic reportLogic, ISchoolSupplieLogic schoolSupplieLogic)
         {
             this.requestLogic = requestLogic;
             this.wareHouseLogic = wareHouseLogic;
             this.supplierLogic = supplierLogic;
             this.reportLogic = reportLogic;
+            this.schoolSupplieLogic = schoolSupplieLogic;
         }
 
         public IActionResult Request()
@@ -138,7 +140,6 @@ namespace SchoolWebSupplier.Controllers
             });
             return View(fridges);
         }
-
         public IActionResult SendWordReport(int id)
         {
             string fileName = "D:\\data\\" + id + ".docx";

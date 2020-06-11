@@ -211,7 +211,7 @@ namespace SchoolWebSupplier.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddSchoolSupplie([Bind("WareHouseId, SchoolSupplieId, Count")] RequestSchoolSupplieBindingModel model)
+        public IActionResult AddSchoolSupplie([Bind("WareHouseId, SchoolSupplieId, Count, PricePerHour")] RequestSchoolSupplieBindingModel model)
         {
             if (Program.Supplier == null)
             {

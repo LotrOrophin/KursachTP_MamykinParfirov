@@ -15,10 +15,13 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
 
             Section section = document.AddSection();
             Paragraph paragraph = section.AddParagraph(info.Title);
-            paragraph.Format.SpaceAfter = "1cm";
+            
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.Style = "NormalTitle";
-
+            Paragraph paragraph1 = section.AddParagraph("C " + info.DateFrom.ToString("dd.MM.yyyy") + " по " + info.DateTo.ToString("dd.MM.yyyy"));
+            paragraph1.Format.SpaceAfter = "1cm";
+            paragraph1.Format.Alignment = ParagraphAlignment.Center;
+            paragraph1.Style = "NormalTitle";
             var table = document.LastSection.AddTable();
             List<string> columns = new List<string> { "4cm", "4cm", "4cm", "3cm", "3cm" };
 
@@ -44,7 +47,7 @@ namespace AbstractSchoolBusinessLogic.BusinessLogic
                         Table = table,
                         Texts = new List<string>
                     {
-                        pc.CompletionDate.ToString(),
+                        pc.CreationDate.ToString(),
                         pc.SchoolSupplieName,
                         pc.Status,
                         pc.Count.ToString(),

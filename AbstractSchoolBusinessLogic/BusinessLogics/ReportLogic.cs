@@ -53,21 +53,24 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             var list = new List<ReportSchoolSupplieViewModel>();
             foreach (var request in requests)
             {
-                foreach (var requestSchoolSupplie in request.SchoolSupplies)
+                if (request.CreationDate >= from && request.CreationDate <= to)
                 {
-                    foreach (var schoolSupplie in schoolSupplies)
+                    foreach (var requestSchoolSupplie in request.SchoolSupplies)
                     {
-                        if (schoolSupplie.SchoolSupplieName == requestSchoolSupplie.Value.Item1)
+                        foreach (var schoolSupplie in schoolSupplies)
                         {
-                            var record = new ReportSchoolSupplieViewModel
+                            if (schoolSupplie.SchoolSupplieName == requestSchoolSupplie.Value.Item1)
                             {
-                                SchoolSupplieName = requestSchoolSupplie.Value.Item1,
-                                Count = requestSchoolSupplie.Value.Item2,
-                                Status = StatusSchoolSupplie(request.Status),
-                                CompletionDate = DateTime.Now,
-                                PricePerHour = schoolSupplie.Price
-                            };
-                            list.Add(record);
+                                var record = new ReportSchoolSupplieViewModel
+                                {
+                                    SchoolSupplieName = requestSchoolSupplie.Value.Item1,
+                                    Count = requestSchoolSupplie.Value.Item2,
+                                    Status = StatusSchoolSupplie(request.Status),
+                                    CompletionDate = DateTime.Now,
+                                    PricePerHour = schoolSupplie.Price
+                                };
+                                list.Add(record);
+                            }
                         }
                     }
                 }
@@ -132,16 +135,19 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             {
                 throw;
             }
-            SendMail("kristina.zolotareva.14@gmail.com", model.FileName, "Список блюд с продуктами");
+            SendMail("kristina.zolotareva.14@gmail.com", model.FileName, "Список кружков с канцелярией");
         }
         public void SaveSchoolSuppliesToPdfFile(ReportBindingModel model)
         {
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "Движение канцелярии",
-                SchoolSupplies = GetSchoolSupplies(model.DateFrom, model.DateTo)
+                Title = "Отчет по движению канцелярии",
+                SchoolSupplies = GetSchoolSupplies(model.DateFrom, model.DateTo),
+                DateTo = model.DateTo,
+                DateFrom = model.DateFrom
             });
+            SendMail("mamykinvladimir00@gmail.com", model.FileName, "Отчет по движению канцелярии");
         }
 
         public void SendMail(string email, string fileName, string subject)
@@ -162,10 +168,12 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
             MailAddress to = new MailAddress(email);
             MailMessage m = new MailMessage(from, to);
             m.Subject = subject;
-            m.Attachments.Add(new Attachment(fileName + "\\order." + type));
-            m.Attachments.Add(new Attachment(fileName + "\\request." + type));
-            m.Attachments.Add(new Attachment(fileName + "\\circle." + type));
-            m.Attachments.Add(new Attachment(fileName + "\\schoolSupplie." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\Order." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\Request." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\RequestSchoolSupplie." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\Circle." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\CircleSchoolSupplie." + type));
+            m.Attachments.Add(new Attachment(fileName + "\\SchoolSupplie." + type));
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
             smtp.Credentials = new NetworkCredential("labwork15kafis@gmail.com", "passlab15");
             smtp.EnableSsl = true;

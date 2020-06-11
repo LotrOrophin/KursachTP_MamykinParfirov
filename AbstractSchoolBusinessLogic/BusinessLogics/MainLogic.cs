@@ -118,7 +118,8 @@ namespace AbstractSchoolBusinessLogic.BusinessLogics
                 Id = model.Id,
                 SupplierId = model.SupplierId,
                 Status = RequestStatus.Создана,
-                SchoolSupllies = model.SchoolSupllies
+                SchoolSupllies = model.SchoolSupllies,
+                CreationDate = DateTime.Now
             });
         }
         public List<ReportCircleSchoolSupplieViewModel> GetCircleSchoolSuppliesOrder()
