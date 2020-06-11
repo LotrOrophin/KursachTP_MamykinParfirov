@@ -10,8 +10,8 @@ using SchoolDatabaseImplement;
 namespace SchoolDatabaseImplement.Migrations
 {
     [DbContext(typeof(SchoolDatabase))]
-    [Migration("20200611105315_dbUpdate")]
-    partial class dbUpdate
+    [Migration("20200611115849_IntialCreate")]
+    partial class IntialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

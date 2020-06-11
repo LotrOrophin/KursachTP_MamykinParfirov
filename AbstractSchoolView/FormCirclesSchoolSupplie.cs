@@ -22,7 +22,7 @@ namespace AbstractSchoolView
             get { return Convert.ToInt32(comboBoxComponent.SelectedValue); }
             set { comboBoxComponent.SelectedValue = value; }
         }
-        public string FoodName { get { return comboBoxComponent.Text; } }
+        public string SchoolSupplieName { get { return comboBoxComponent.Text; } }
         public int Count
         {
             get { return Convert.ToInt32(textBoxCountComponent.Text); }
@@ -38,7 +38,7 @@ namespace AbstractSchoolView
             List<SchoolSupplieViewModel> list = logic.Read(null);
             if (list != null)
             {
-                comboBoxComponent.DisplayMember = "FoodName";
+                comboBoxComponent.DisplayMember = "SchoolSupplieName";
                 comboBoxComponent.ValueMember = "Id";
                 comboBoxComponent.DataSource = list;
                 comboBoxComponent.SelectedItem = null;

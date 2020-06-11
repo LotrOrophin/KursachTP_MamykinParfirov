@@ -21,8 +21,8 @@ namespace AbstractSchoolView
         private readonly MainLogic logic;
         private readonly IOrderLogic orderLogic;
         private readonly IRequestLogic requestLogic;
-        private readonly ICircleLogic dishLogic;
-        private readonly ISchoolSupplieLogic foodLogic;
+        private readonly ICircleLogic circleLogic;
+        private readonly ISchoolSupplieLogic schoolSupplieLogic;
         private readonly ReportLogic report;
 
         public FormMain(MainLogic logic, IOrderLogic orderLogic, ReportLogic report,
@@ -32,9 +32,9 @@ namespace AbstractSchoolView
             this.logic = logic;
             this.orderLogic = orderLogic;
             this.report = report;
-            this.dishLogic = circleLogic;
+            this.circleLogic = circleLogic;
             this.requestLogic = requestLogic;
-            this.foodLogic = schoolSupplieLogic;
+            this.schoolSupplieLogic = schoolSupplieLogic;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -164,7 +164,7 @@ namespace AbstractSchoolView
 
         private void кружкиExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormReportCircleXls>();
+            var form = Container.Resolve<FormReportCircleExcel>();
             form.ShowDialog();
         }
 
@@ -187,11 +187,12 @@ namespace AbstractSchoolView
                 var fbd = new FolderBrowserDialog();
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    orderLogic.SaveXml(fbd.SelectedPath);
-                    orderLogic.SaveXml(fbd.SelectedPath);
-                    foodLogic.SaveXmlSchoolSupplie(fbd.SelectedPath);
-                    dishLogic.SaveXml(fbd.SelectedPath);
                     requestLogic.SaveXmlRequest(fbd.SelectedPath);
+                    requestLogic.SaveXmlRequestSchoolSupplie(fbd.SelectedPath);
+                    circleLogic.SaveXmlCircle(fbd.SelectedPath);
+                    circleLogic.SaveXmlCircleSchoolSupplie(fbd.SelectedPath);
+                    orderLogic.SaveXmlOrder(fbd.SelectedPath);
+                    schoolSupplieLogic.SaveXmlSchoolSupplie(fbd.SelectedPath);
                     report.SendMailReport("mamykinvladimir00@gmail.com", fbd.SelectedPath, "XML копия", "xml");
                     MessageBox.Show("Резерваная копия выслана", "Сообщение",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -211,11 +212,12 @@ namespace AbstractSchoolView
                 var fbd = new FolderBrowserDialog();
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    orderLogic.SaveJson(fbd.SelectedPath);
-                    orderLogic.SaveJson(fbd.SelectedPath);
-                    foodLogic.SaveJsonSchoolSupplie(fbd.SelectedPath);
-                    dishLogic.SaveJson(fbd.SelectedPath);
                     requestLogic.SaveJsonRequest(fbd.SelectedPath);
+                    requestLogic.SaveJsonRequestSchoolSupplie(fbd.SelectedPath);
+                    circleLogic.SaveJsonCircle(fbd.SelectedPath);
+                   circleLogic.SaveJsonCircleSchoolSupplie(fbd.SelectedPath);
+                    orderLogic.SaveJsonOrder(fbd.SelectedPath);
+                    schoolSupplieLogic.SaveJsonSchoolSupplie(fbd.SelectedPath);
                     report.SendMailReport("mamykinvladimir00gmail.com", fbd.SelectedPath, "JSON копия", "json");
                     MessageBox.Show("Резервная копия выслана", "Сообщение",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
