@@ -65,7 +65,7 @@
             this.ClientSize = new System.Drawing.Size(557, 271);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.dataGridView);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRequestSchoolSupplie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Заказ с канц. товарами";

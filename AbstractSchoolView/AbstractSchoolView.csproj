@@ -284,6 +284,9 @@
     <EmbeddedResource Include="FormCreateRequest.resx">
       <DependentUpon>FormCreateRequest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCreateSchoolSupplie.resx">
+      <DependentUpon>FormCreateSchoolSupplie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

@@ -48,7 +48,7 @@
             // labelCountComponent
             // 
             this.labelCountComponent.AutoSize = true;
-            this.labelCountComponent.Location = new System.Drawing.Point(6, 42);
+            this.labelCountComponent.Location = new System.Drawing.Point(6, 65);
             this.labelCountComponent.Name = "labelCountComponent";
             this.labelCountComponent.Size = new System.Drawing.Size(69, 13);
             this.labelCountComponent.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             // textBoxCountComponent
             // 
-            this.textBoxCountComponent.Location = new System.Drawing.Point(76, 42);
+            this.textBoxCountComponent.Location = new System.Drawing.Point(76, 62);
             this.textBoxCountComponent.Name = "textBoxCountComponent";
             this.textBoxCountComponent.Size = new System.Drawing.Size(248, 20);
             this.textBoxCountComponent.TabIndex = 3;
@@ -72,7 +72,7 @@
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonSave.Location = new System.Drawing.Point(161, 68);
+            this.buttonSave.Location = new System.Drawing.Point(160, 88);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(72, 28);
             this.buttonSave.TabIndex = 4;
@@ -83,7 +83,7 @@
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonCancel.Location = new System.Drawing.Point(252, 68);
+            this.buttonCancel.Location = new System.Drawing.Point(252, 88);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(72, 28);
             this.buttonCancel.TabIndex = 5;
@@ -96,7 +96,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(329, 102);
+            this.ClientSize = new System.Drawing.Size(329, 128);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxCountComponent);

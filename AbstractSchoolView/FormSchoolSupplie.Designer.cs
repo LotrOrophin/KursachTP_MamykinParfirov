@@ -32,6 +32,8 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelName
@@ -53,7 +55,7 @@
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonSave.Location = new System.Drawing.Point(12, 63);
+            this.buttonSave.Location = new System.Drawing.Point(12, 86);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(180, 40);
             this.buttonSave.TabIndex = 2;
@@ -64,7 +66,7 @@
             // buttonCancel
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.AliceBlue;
-            this.buttonCancel.Location = new System.Drawing.Point(216, 63);
+            this.buttonCancel.Location = new System.Drawing.Point(223, 86);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(168, 40);
             this.buttonCancel.TabIndex = 3;
@@ -72,12 +74,30 @@
             this.buttonCancel.UseVisualStyleBackColor = false;
             this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
+            // textBoxPrice
+            // 
+            this.textBoxPrice.Location = new System.Drawing.Point(89, 50);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(295, 20);
+            this.textBoxPrice.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Цена:";
+            // 
             // FormSchoolSupplie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(403, 118);
+            this.ClientSize = new System.Drawing.Size(403, 189);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxName);
@@ -85,7 +105,6 @@
             this.Name = "FormSchoolSupplie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Канц. товар";
-            this.Load += new System.EventHandler(this.FormComponent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,5 +116,7 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.Label label1;
     }
 }

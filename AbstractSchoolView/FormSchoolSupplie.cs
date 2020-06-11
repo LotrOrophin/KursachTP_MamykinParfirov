@@ -26,26 +26,6 @@ namespace AbstractSchoolView
             InitializeComponent();
             this.logic = logic;
         }
-
-        private void FormComponent_Load(object sender, EventArgs e)
-        {
-            if (id.HasValue)
-            {
-                try
-                {
-                    var view = logic.Read(new SchoolSupplieBindingModel { Id = id.Value })?[0];
-                    if (view != null)
-                    {
-                        textBoxName.Text = view.SchoolSupplieName;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))
@@ -58,8 +38,9 @@ namespace AbstractSchoolView
                 logic.CreateOrUpdate(new SchoolSupplieBindingModel
                 {
                     Id = id ?? null,
-                    SchoolSupplieName = textBoxName.Text
-                });
+                    SchoolSupplieName = textBoxName.Text,
+                    Price = Convert.ToDecimal(textBoxPrice.Text),
+                }); ; ;
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
@@ -75,5 +56,6 @@ namespace AbstractSchoolView
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
     }
 }
