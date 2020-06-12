@@ -27,11 +27,11 @@ namespace SchoolWebSupplier.Controllers
             {
                 return new UnauthorizedResult();
             }
-            var fridge = wareHouseLogic.Read(new WareHouseBindingModel
+            var wareHouse = wareHouseLogic.Read(new WareHouseBindingModel
             {
                 SupplierId = Program.Supplier.Id
             });
-            return View(fridge);
+            return View(wareHouse);
         }
 
         public IActionResult Details(int? id)
@@ -44,7 +44,7 @@ namespace SchoolWebSupplier.Controllers
             {
                 return NotFound();
             }
-            ViewBag.FridgeId = id;
+            ViewBag.WareHouseId = id;
             var schoolSupplies = wareHouseLogic.Read(new WareHouseBindingModel
             {
                 Id = id
@@ -169,20 +169,20 @@ namespace SchoolWebSupplier.Controllers
             {
                 return NotFound();
             }
-            var fridge = wareHouseLogic.Read(new WareHouseBindingModel
+            var wareHouse = wareHouseLogic.Read(new WareHouseBindingModel
             {
                 Id = id
             })?[0];
-            if (fridge == null)
+            if (wareHouse == null)
             {
                 return NotFound();
             }
             return View(new WareHouse
             {
                 Id = id.Value,
-                WareHouseName = fridge.WareHouseName,
-                Size = fridge.Size,
-                Type = fridge.Type
+                WareHouseName = wareHouse.WareHouseName,
+                Size = wareHouse.Size,
+                Type = wareHouse.Type
             });
         }
 
@@ -236,7 +236,7 @@ namespace SchoolWebSupplier.Controllers
             return RedirectToAction("Details", new { id = model.WareHouseId });
         }
 
-        public IActionResult ReserveFoods(int wareHouseId, int schoolSupplieId, int count, int requestId)
+        public IActionResult ReserveSchoolSupplies(int wareHouseId, int schoolSupplieId, int count, int requestId)
         {
             if (Program.Supplier == null)
             {

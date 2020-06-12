@@ -18,44 +18,44 @@ namespace SchoolWebSupplier.Controllers
             this.schoolSupplieLogic = schoolSupplieLogic;
         }
 
-        public IActionResult ListFoods(int fridgeId)
+        public IActionResult ListSchoolSupplies(int wareHouseId)
         {
             if (Program.Supplier == null)
             {
                 return new UnauthorizedResult();
             }
-            ViewBag.fridgeId = fridgeId;
+            ViewBag.wareHouseId = wareHouseId;
             return View(schoolSupplieLogic.Read(null));
         }
 
-        public IActionResult AddFood(int? FoodId, int? FridgeId)
+        public IActionResult AddSchoolSupplie(int? SchoolSupplieId, int? WareHouseId)
         {
             if (Program.Supplier == null)
             {
                 return new UnauthorizedResult();
             }
-            if (FoodId == null && FridgeId == null)
+            if (SchoolSupplieId == null && WareHouseId == null)
             {
                 return NotFound();
             }
-            if (TempData["ErrorLackInFridge"] != null)
+            if (TempData["ErrorLackInWareHouse"] != null)
             {
-                ModelState.AddModelError("", TempData["ErrorLackInFridge"].ToString());
+                ModelState.AddModelError("", TempData["ErrorLackInWareHouse"].ToString());
             }
-            var food = schoolSupplieLogic.Read(new SchoolSupplieBindingModel
+            var schoolSupplie = schoolSupplieLogic.Read(new SchoolSupplieBindingModel
             {
-                Id = FoodId
+                Id = SchoolSupplieId
             })?[0];
-            if (food == null)
+            if (schoolSupplie == null)
             {
                 return NotFound();
             }
-            ViewBag.FoodName = food.SchoolSupplieName;
-            ViewBag.FridgeId = FridgeId;
+            ViewBag.SchoolSupplieName = schoolSupplie.SchoolSupplieName;
+            ViewBag.WareHouseId = WareHouseId;
             return View(new RequestSchoolSupplieBindingModel
             {
-                SchoolSupplieId = FoodId.Value,
-                WareHouseId = FridgeId.Value,
+                SchoolSupplieId = WareHouseId.Value,
+                WareHouseId = WareHouseId.Value,
             });
         }
     }

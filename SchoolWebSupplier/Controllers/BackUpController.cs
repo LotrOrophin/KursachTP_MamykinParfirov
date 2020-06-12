@@ -7,6 +7,7 @@ using AbstractSchoolBusinessLogic.BusinessLogics;
 using AbstractSchoolBusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MigraDoc.Rendering;
 
 namespace SchoolWebSupplier.Controllers
 {
@@ -31,7 +32,9 @@ namespace SchoolWebSupplier.Controllers
         }
         public IActionResult BackUpToJson()
         {
-            string fileName = "E:\\BackupJson";
+            //Directory.CreateDirectory("F:\\BackupJson");
+            //System.IO.File.Create("F:\\BackupJson\\BackupJson.json");
+            string fileName = "F:\\BackupJson";
             if (Directory.Exists(fileName))
             {
                 _request.SaveJsonRequest(fileName);
@@ -40,7 +43,7 @@ namespace SchoolWebSupplier.Controllers
                 _wareHouse.SaveJsonWareHouseSchoolSupplie(fileName);
                 _supplier.SaveJsonSupplier(fileName);
                 _schoolSupplie.SaveJsonSchoolSupplie(fileName);
-                _supplierReport.SendMailBackup("denis_73007@mail.ru", fileName, "Бэкап Json", "json");
+                _supplierReport.SendMailBackup("mamykinvladimir00@gmail.com", fileName, "Бэкап Json", "json");
                 return RedirectToAction("BackUp");
             }
             else
@@ -50,7 +53,9 @@ namespace SchoolWebSupplier.Controllers
         }
         public IActionResult BackUpToXml()
         {
-            string fileName = "E:\\BackupXml";
+            Directory.CreateDirectory("F:\\BackupXml");
+            System.IO.File.Create("F:\\BackupXml\\BackupXml.Xml");
+            string fileName = "F:\\BackupXml";
             if (Directory.Exists(fileName))
             {
                 _request.SaveXmlRequest(fileName);
@@ -59,7 +64,7 @@ namespace SchoolWebSupplier.Controllers
                 _wareHouse.SaveXmlWareHouseSchoolSupplie(fileName);
                 _supplier.SaveXmlSupplier(fileName);
                 _schoolSupplie.SaveXmlSchoolSupplie(fileName);
-                _supplierReport.SendMailBackup("denis_73007@mail.ru", fileName, "Бэкап Xml", "xml");
+                _supplierReport.SendMailBackup("mamykinvladimir00@gmail.com", fileName, "Бэкап Xml", "xml");
                 return RedirectToAction("BackUp");
             }
             else

@@ -8,15 +8,12 @@
 }
 
 @section Links {
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-        <ul class="navbar-nav flex-grow-1">
-            <li class="nav-item">
-                <a class="nav-link text-light" asp-area="" asp-controller="Request" asp-action="Request">Список заявок</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" asp-area="" asp-controller="WareHouse" asp-action="ListWareHouses">Холодильники</a>
-            </li>
-        </ul>
+    <div>
+
+                <a style="margin-right: 20px; float:right;" asp-area="" asp-controller="Request" asp-action="Request">Список заявок</a>
+
+                <a style="margin-right: 20px; float:right;" asp-area="" asp-controller="WareHouse" asp-action="ListWareHouses">Холодильники</a>
+
     </div>
 }
 
@@ -32,8 +29,8 @@
 
 <hr />
 
-<table class="table table-striped table-bordered">
-    <thead class="thead thead-dark">
+<table cellspacing="2" border="1" cellpadding="5">
+    <thead>
         <tr>
             <th>
                 Канцелярия
@@ -58,7 +55,7 @@
                     @if (!item.Value.Item3)
                     {
                         completed = false;
-                        <a class="btn btn-primary btn-sm btn-block" asp-action="ListFoodAvailable"
+                        <a asp-action="ListSchoolSupplieAvailable"
                            asp-route-id="@item.Key" asp-route-name="@item.Value.Item1"
                            asp-route-count="@item.Value.Item2" asp-route-requestId="@ViewBag.RequestId">
                             Зарезервировать
@@ -66,7 +63,7 @@
                     }
                     else
                     {
-                        <button type="button" class="btn btn-primary btn-sm btn-block" disabled>Зарезервировано</button>
+                        <button type="button" disabled>Зарезервировано</button>
                     }
                 </td>
             </tr>
@@ -76,8 +73,8 @@
 @if (completed)
 {
     <hr />
-    <div class="row justify-content-center">
-        <a class="btn btn-primary btn-sm btn-block" asp-action="CompleteRequest" asp-route-id="@ViewBag.RequestId">Выполнить</a>
+    <div>
+        <a asp-action="CompleteRequest" asp-route-id="@ViewBag.RequestId">Выполнить</a>
     </div>
     <hr />
     <p>

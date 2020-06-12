@@ -52,7 +52,7 @@ namespace SchoolWebSupplier.Controllers
                 DateTo = model.To
             });
             ViewBag.Requests = requests;
-            string fileName = "D:\\data\\Reportpdf.pdf";
+            string fileName = "F:\\Reportpdf.pdf";
             if (model.SendMail)
             {
                 reportLogic.SaveSchoolSuppliesToPdfFile(fileName, new RequestBindingModel
@@ -73,14 +73,14 @@ namespace SchoolWebSupplier.Controllers
             }
             if (TempData["ErrorFoodReserve"] != null)
             {
-                ModelState.AddModelError("", TempData["ErrorFoodReserve"].ToString());
+                ModelState.AddModelError("", TempData["ErrorSchoolSupplieReserve"].ToString());
             }
             ViewBag.RequestID = ID;
-            var foods = requestLogic.Read(new RequestBindingModel
+            var schoolsupplies = requestLogic.Read(new RequestBindingModel
             {
                 Id = ID
             })?[0].SchoolSupplies;
-            return View(foods);
+            return View(schoolsupplies);
         }
 
         public IActionResult Reserve(int requestId, int schoolSupplieId)
@@ -89,7 +89,7 @@ namespace SchoolWebSupplier.Controllers
             {
                 return new UnauthorizedResult();
             }
-            supplierLogic.ReserveFoods(new ReserveSchoolSuppliesBindingModel
+            supplierLogic.ReserveSchoolSupplies(new ReserveSchoolSuppliesBindingModel
             {
                 RequestId = requestId,
                 SchoolSupplieId = schoolSupplieId
@@ -123,7 +123,7 @@ namespace SchoolWebSupplier.Controllers
             return RedirectToAction("Request");
         }
 
-        public IActionResult ListFoodAvailable(int id, int count, string name, int requestId)
+        public IActionResult ListSchoolSupplieAvailable(int id, int count, string name, int requestId)
         {
             if (Program.Supplier == null)
             {
@@ -131,18 +131,18 @@ namespace SchoolWebSupplier.Controllers
             }
             ViewBag.FoodName = name;
             ViewBag.Count = count;
-            ViewBag.FoodId = id;
+            ViewBag.SchoolSupplieId = id;
             ViewBag.RequestId = requestId;
-            var fridges = wareHouseLogic.GetWareHouseAvailable(new RequestSchoolSupplieBindingModel
+            var warehouses = wareHouseLogic.GetWareHouseAvailable(new RequestSchoolSupplieBindingModel
             {
                 SchoolSupplieId = id,
                 Count = count
             });
-            return View(fridges);
+            return View(warehouses);
         }
         public IActionResult SendWordReport(int id)
         {
-            string fileName = "D:\\data\\" + id + ".docx";
+            string fileName = "F:\\" + id + ".docx";
             reportLogic.SaveNeedSchoolSupplieToWordFile(new WordInfo
             {
                 FileName = fileName,
@@ -153,7 +153,7 @@ namespace SchoolWebSupplier.Controllers
         }
         public IActionResult SendExcelReport(int id)
         {
-            string fileName = "D:\\data\\" + id + ".xlsx";
+            string fileName = "F:\\" + id + ".xlsx";
             reportLogic.SaveNeedSchoolSupplieToExcelFile(new ExcelInfo
             {
                 FileName = fileName,
