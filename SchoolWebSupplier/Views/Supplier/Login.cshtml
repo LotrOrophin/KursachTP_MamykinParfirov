@@ -1,0 +1,37 @@
+﻿@model LoginModel
+
+@{
+    ViewData["Title"] = "Вход";
+}
+
+@section Links {
+    <div style="float:right; margin-right: 20px;">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Главная страница</a>
+    </div>
+}
+
+<h1>Вход</h1>
+
+<hr/>
+<div>
+    <div>
+        <div>
+            <form asp-action="Login" style="margin: 0 auto; width: 960px;">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Login" class="control-label"></label>
+                    <input asp-for="Login" class="form-control" />
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Войти"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

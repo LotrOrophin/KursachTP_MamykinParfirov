@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AbstractSchoolBusinessLogic.ViewModels.WareHouseViewModel>
+
+@{
+    ViewData["Title"] = "Склад";
+}
+
+@section Links {
+    <div>
+                <a style="margin-right:20px; float:right;" asp-area="" asp-controller="Request" asp-action="Request">Список заявок</a>
+    </div>
+}
+
+<div class="text-left">
+    <h4>Список складов</h4>
+</div>
+
+<hr />
+
+<div class="text-left">
+    <h6>Поставщик - @Program.Supplier.SupplierFIO</h6>
+</div>
+
+<p>
+    <a asp-action="CreateWareHouse">Создание склада</a>
+</p>
+
+<table cellspacing="2" border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WareHouseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WareHouseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" asp-r>Выбрать</a>|
+                    <a asp-action="ChangeWareHouse" asp-route-id="@item.Id">Изменить</a>|
+                    <a asp-action="DeleteWareHouse" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

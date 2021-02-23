@@ -1,0 +1,40 @@
+﻿@model AbstractSchoolBusinessLogic.BindingModels.RequestSchoolSupplieBindingModel
+
+@{
+    ViewData["Title"] = "Пополнение";
+}
+
+<div class="text-left">
+    <h4>Пополнение склада №@ViewBag.WareHouseId</h4>
+</div>
+
+<hr />
+<div>
+    <a asp-action="ListSchoolSupplies" asp-route-wareHouseId="@ViewBag.WareHouseId">Вернуться назад</a>
+</div>
+<hr />
+
+<div class="text-left">
+    <h4>@ViewBag.SchoolSupplieName</h4>
+</div>
+
+<div>
+    <div>
+        <form asp-controller="WareHouse" asp-action="AddSchoolSupplie">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="WareHouseId" />
+            <input type="hidden" asp-for="SchoolSupplieId" />
+            <div class="form-group">
+                <label asp-for="Count">Количество</label>
+                <input asp-for="Count"/>
+                <span asp-validation-for="Count"></span>
+                <label asp-for="PricePerHour">Стоимость</label>
+                <input asp-for="PricePerHour"/>
+                <span asp-validation-for="PricePerHour"></span>
+            </div>
+            <div>
+                <input type="submit" value="Пополнить" />
+            </div>
+        </form>
+    </div>
+</div>

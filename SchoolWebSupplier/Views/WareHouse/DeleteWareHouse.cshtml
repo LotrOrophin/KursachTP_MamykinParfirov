@@ -1,0 +1,45 @@
+﻿@model SchoolDatabaseImplement.Models.WareHouse
+
+@{
+    ViewData["Title"] = "Удаление склада";
+}
+
+<h3>Удаление склада №@Model.Id</h3>
+
+<div class="text-left">
+    <h5>Вы уверены, что хотите удалить холодильник?</h5>
+</div>
+
+<hr />
+<div>
+    <a asp-action="ListWareHouses">Вернуться назад</a>
+</div>
+<hr />
+
+<div>
+    <dl>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WareHouseName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WareHouseName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteWareHouse">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" class="btn btn-dark" />
+    </form>
+</div>

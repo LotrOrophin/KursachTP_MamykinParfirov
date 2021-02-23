@@ -1,0 +1,46 @@
+﻿@model SchoolDatabaseImplement.Models.WareHouse
+
+@{
+    ViewData["Title"] = "Создание склада";
+}
+
+@section Links {
+    <div>
+
+                <a style="margin-right:20px; float:right;" asp-area="" asp-controller="Request" asp-action="Request">Список заявок</a>
+    </div>
+}
+
+<h3>Создание склада</h3>
+
+<hr/>
+<div>
+    <a asp-action="WareHouses">Вернуться назад</a>
+</div>
+<hr/>
+
+<div>
+    <div>
+        <form asp-action="CreateWareHouse">
+            <div asp-validation-summary="ModelOnly" ></div>
+            <div>
+                <label asp-for="WareHouseName"></label>
+                <input asp-for="WareHouseName" />
+                <span asp-validation-for="WareHouseName"></span>
+            </div>
+            <div>
+                <label asp-for="Size"></label>
+                <input asp-for="Size"/>
+                <span asp-validation-for="Size"></span>
+            </div>
+            <div>
+                <label asp-for="Type"></label>
+                <input asp-for="Type" />
+                <span asp-validation-for="Type" ></span>
+            </div>
+            <div>
+                <input type="submit" value="Создать" />
+            </div>
+        </form>
+    </div>
+</div>

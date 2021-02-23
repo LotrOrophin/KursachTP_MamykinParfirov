@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AbstractSchoolBusinessLogic.ViewModels.WareHouseAvailableViewModel>
+
+@{
+    ViewData["Title"] = "Список складов";
+}
+
+<div class="text-left">
+    <h4>@ViewBag.SchoolSupplieName</h4>
+</div>
+
+<hr />
+<div class="text-left">
+    <h6>@ViewBag.Count канцелярии в наличии</h6>
+</div>
+<hr />
+
+<table cellspacing="2" border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WareHouseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WareHouseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td class="text-center">
+                    <a asp-controller="WareHouse"
+                       asp-action="ReserveSchoolSupplies" asp-route-wareHouseId="@item.WareHouseId"
+                       asp-route-schoolSupplieId="@ViewBag.SchoolSupplieId" asp-route-count="@ViewBag.Count"
+                       asp-route-requestId="@ViewBag.RequestId">
+                        Зарезервировать
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

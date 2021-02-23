@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AbstractSchoolBusinessLogic.ViewModels.SchoolSupplieViewModel>
+
+@{
+    ViewData["Title"] = "Канцелярия";
+}
+
+<div class="text-left">
+    <h4>Пополнение склада №@ViewBag.wareHouseId</h4>
+</div>
+
+<hr />
+<div>
+    <a asp-controller="WareHouse" asp-action="Details" asp-route-id="@ViewBag.WareHouseId">Вернуться назад</a>
+</div>
+<hr />
+
+<table cellspacing="2" border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SchoolSupplieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchoolSupplieName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="AddSchoolSupplie" asp-route-schoolSupplieId="@item.Id" asp-route-wareHouseId="@ViewBag.WareHouseId">Пополнить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+﻿@model ReportModel
+
+@{
+    ViewData["Title"] = "Отчет по канцелярии";
+}
+
+@section Links {
+    <div>
+            <a style="margin-right: 20px; float:right;" asp-area="" asp-controller="Request" asp-action="Request">Список заявок</a>
+            <a style="margin-right: 20px; float:right;" asp-area="" asp-controller="WareHouse" asp-action="ListWareHouses">Склады</a>
+    </div>
+}
+
+<div class="text-left">
+    <h4>Отчет по канцелярии</h4>
+</div>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <p>
+        Выберите даты для отображения отчета по канцелярии
+    </p>
+    <p>
+        От: @Html.EditorFor(model => model.From)
+    </p>
+    <p>
+        До: @Html.EditorFor(model => model.To)
+    </p>
+    <p>
+        @Html.EditorFor(model => model.SendMail) Отправить отчёт по канцелярии на почту
+    </p>
+    <p>
+        <button type="submit" class="btn btn-primary btn-sm">Получить</button>
+    </p>
+}
+<hr />
+@foreach (var request in ViewBag.requests)
+{
+    <p>Номер заявки: @request.Id</p>
+    <p>Дата создания: @request.CreationDate</p>
+    <p>Дата выполнения: @request.CompletionDate</p>
+    <p>ФИО: @request.SupplierFIO</p>
+    <p>Статус: @request.Status</p>
+    <p>Сумма: @request.Sum</p>
+    <p>Состав:</p>
+    <table class="table">
+        <tr>
+            <td>Канцелярия</td>
+            <td>Количество</td>
+        </tr>
+        @foreach (var schoolSupplie in request.SchoolSupplies)
+        {
+            <tr>
+                <td>@schoolSupplie.Value.Item1</td>
+                <td>@schoolSupplie.Value.Item2</td>
+            </tr>
+        }
+    </table>
+}
